@@ -1,0 +1,83 @@
+Computer Glossary
+
+Applet:
+A small Java application that is downloaded by an ActiveX or Java-enabled web
+browser. Wnce it has been downloaded, the applet will run on the user's
+computer. Common applets include financial calculators and web draawing
+programs.
+
+Application:
+Computer software that prforms a task or set of tasks, such as word
+processing or drawing. Applications are also referred to as programs.
+
+ASCII:
+American Standard Code for Information Interchange, an encoding system for
+converting keyboard characters and instructions into the binary number code
+that the computer understands.
+
+Bandwith:
+The capacity of a networked connection. Bandwidth determines how much data
+can be sent along the networked wires. Bandwidth is particularly important for
+Internet connections, since grater bandwidth also means faster downloads.
+
+Binary code:
+The most basic language a computer understands, it is composed of a series of 
+0s an 1s. The computer interprets the code to form numbers, letters, 
+puctuation marks, and symbols.
+
+Bit:
+The smallest piece of computer information, either the number 0 or 1. In short
+they are called binary digits.
+
+Boot:
+To atart up a computer. Cold boot means restarting computer after the power is
+turned off. Warm boot means restarting computer without turning off the power.
+
+Browser:
+Software used to navigate the Internet. Google Chrome, Firefox, Netscape Navigator and Microsoft Internet Explorer are today's most popular browsers for accessing the World Wide Web.
+
+Bug:
+A malfuncion due to an errir in the program or a defect in the equipment.
+
+Byte:
+Most computers use combinations of eight bits, called bytes, to represent one
+character of data or instructions. For example, the word cat has three 
+characters, and it would be represented by three bytes.
+
+Cache:
+A small data-memory storage area that a computer can use to instantly
+re-access data instead of re-reading the data from the original source, such as a hard drive. Browsers use a cache to store web pages so that the user may 
+view them again without reconnecting to the Web.
+
+CAD-CAM:
+Computer Aided Drawing - Computer Aided Manufacturing.  
+The instructions stored in a computer that will be translated to very precise 
+operating instructions to a robot, such as for assembling cars or laser-cutting signage.
+
+CD-ROM:
+Compact Disc Read-Only Memory, an optically read disc designed to hold
+information such as music, reference materials, or computer software. A single CD-ROM can hold around 640 megabytes of data, enough for several
+encyclopaedias. Most software programs are now delivered on CD-ROMs.
+
+CGI:
+Common Gateway Interface, a programming standard that allows visitors to
+fill out form fields on a web page and have that information interact with a 
+database, possibly coming back to the user as another Web page. CGI may also
+refer to Computer-Generated Imaging, the process in which sophisticated
+computer programs create still and animated graphics, such as special effects for movies.
+
+Chip:
+A tiny wafer of silicon containing miniature electric circuits that can stre
+milions of bits of information.
+
+Client:
+A single user of a netwrk application that is operated from a server. A
+client/server architecture allows many people to use the same data
+simultaneously. The program's main component (the data) resides on a 
+centralized server, with smaller components (user interface) on each client.
+
+Cookie:
+A text file sent by a Web server that is stored on the hard drive of a computer and relays back to the Web server things about the user, his or her computer, and/or his or her computer activities.
+
+CPU:
+A moving position-indicator displaye

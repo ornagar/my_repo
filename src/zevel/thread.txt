@@ -1,0 +1,450 @@
+THREADS:
+
+Reading:
+
+thread:
+	A thread is a mini process running on the same resources as the main 
+	thread (process). The only difference between threads is that each has
+	its own stack on which he can work undisturbed. 
+	Its important to remember that multiple threads run in an asynchronic way,
+	meaning the timing of each one is unpredictable. 
+
+Reentrancy:
+	If i understand correctly reentrancy is a function that is thread or 
+	asynchronic safe.
+	
+Process synchronization:
+	Thread synchronization is defined as a mechanism which ensures that
+	two or more concurrent processes or threads do not simultaneously execute
+	some particular program segment known as critical section. Processes access
+	to critical section is controlled by using synchronization techniques.
+	When one thread starts executing the critical section the other thread
+	should wait until the first thread finishes.
+	
+Race condition:
+	Race conditions arise when an application depends on the sequence
+	or timing of processes or threads for it to operate properly. There are
+	critical race conditions that result in invalid execution and bugs.
+	Critical race conditions often happen when the processes or threads depend
+	on some shared state. Operations upon shared states are critical sections 
+	that must be mutually exclusive. Failure to obey this rule opens up the 
+	possibility of corrupting the shared state.
+	
+Deadlock:
+	A deadlock is a state in which each member of a group is waiting for some
+	other member to take action, such as sending a message or more commonly 
+	releasing a lock. Deadlock is a common problem in multiprocessing systems, 
+	parallel computing, and distributed systems, where software and hardware 
+	locks are used to handle shared resources and implement process 
+	synchronization.
+
+Busy waiting:
+	Busy waiting is a technique in which a process repeatedly checks to 
+	see if a condition is true. We prefer avoiding busy waiting if possible 
+	because it is a cpu consumer technique. The preferred technique is for the
+	process/thread to block or sleep until the desired condition is true.
+
+Mutual Exclusion:
+	It is a property of concurrency control, which is instituted for the 
+	purpose of preventing race conditions. It is the requirement that one thread 
+	of execution never enter its critical section at the same time that another
+	concurrent thread of execution enters its own critical section.
+	The problem which mutual exclusion addresses is a problem of resource 
+	sharing: how can a software system control multiple processes access to a 
+	shared resource, when each process needs exclusive control of that resource 
+	while doing its work? The mutual exclusion solution to this problem makes the
+	shared resource available only while the process is in a specific code segment
+	called the critical section. It controls access to the shared resource by 
+	controlling each process execution of that part of its program where the 
+	resource would be used. Important to remember that mutexes are the main cause
+	to deadlocks.
+	
+Critical section:
+	Concurrent accesses to shared resources by more than one process/thread can
+	lead to unexpected or erroneous behavior, so parts of the program where the
+	shared resource is accessed are protected. Thils protected section is the 
+	critical region/section. It cannot be executed by more than one process at 
+	the same time. Typically, the critical section accesses a shared resource, 
+	such as a data structure, a peripheral device, or a network connection, that
+	would not operate correctly in the context of multiple concurrent accesses.
+	
+Thread local storage:
+	Tls is used in some places where ordinary, single-threaded programs would 
+	use global variables, but where this would be inappropriate in multi threaded
+	cases. An example of such situations is where functions use a global variable
+	to set an error condition (for example the global variable errno).
+	A possible use instead of using a true global variable to get data from all
+	threads and guarding it with a mutex each time a thread wants to write to it, 
+	every thread can write to its own TLS and periodicaly add it to the global 
+	using mutexes. Use pthread_key_t and its functions to use TLS.
+	
+Priority inversion:
+	A problematic situation where lower priority task blocks a higher priority 
+	task those changing the actual priority.
+	
+Questions:
+
+1. what is a thread?
+	A thread is a mini process running on the same resources as the main 
+	thread (process). The only difference between threads on the same process 
+	is that each has its own stack on which he can work undisturbed. 
+	Its important to remember that multiple threads run in an asynchronic way,
+	meaning the timing of each one is unpredictable. 
+
+2. write 20 differences between a process and a thread:
+	1. Threads always run the same elf.
+	2. Threads share the same memory space.
+	3. Creating threads should be less expensive then creating a new process.
+	   No exec, and no copying of memory on write.
+	4. Sharing data is faster in threads because they share the same address 
+       space, and no system calls for signal is needed.
+    5. Processes control only child processes, threads can control other threads 
+       in the same process.
+    6. Changes in a process never affect child processes, in threads changes
+	   to the main thread can affect child threads.
+	7. Threads share file descriptors.
+	8. Every process has its own signal handler (if needed), threads share the 
+	   same signal handler.
+	9. Processes are independent and threads are dependent on their process.
+	10. Processes has their own security context, threads share it.
+	11. A process can run multiple-threads in it.
+
+3. When would you use process and when would you use thread?
+	I would use a thread only when parallelism is needed inside the process 
+	resources. If we need to run one program from  another we can create a child
+	process and let them run in parallelism.
+
+4. What is a multi-threaded program?
+	A program that uses more then one thread mostly to improve time performance 
+	by taken advantage of the parallel or semi-parallel behavior of threads.
+	For example two different threads one writing and one reading from the same
+	buffer.
+
+5. Name at least 3 types of problems where it is beneficial to use multi-
+ threading.
+	1. If a process needs to make some tasks that take time it is better use 
+	some threads and assign each with a different task (or more than one thread
+	per task).
+	2. If we have a system that receives multiple tasks from an outside source
+	it is more clever to let threads to work each on a different task than 
+	letting one thread handle each task and keep the other tasks waiting.
+	3. If the process needs to do some heavy processing and we want to keep it 
+	user friendly we let a thread to be the only user interface and other threads
+	do the processing in the background silently.
+	4. When a process spends a lot of time making i/o thus keeping the cpu idle
+	most time. multi-threading is a good solution to keep the cpu busy.
+	
+6. What are the problems of multi-threading?
+	1. Race conditions can lead to unpredictable results.
+	2. mutexes that work to prevent race conditions can cause deadlocks.
+	3. Threads blocking each other for keeping critical sections can lead to 
+	priority inversion.
+	4. It is very difficult to predict the results of a complex multi-threaded
+	program as the synchronization is up to the OS scheduler.
+	5. When one of the above cause a bug it is very difficult to restore the 
+	condition under it the bug happened and to debug it.
+	
+7. How would you transfer data between two threads?
+	I can use global flags in the program to signal other threads the problem is
+	that the flag need to be checked and the signal is synchronous. 
+	The other solution is use of interprocess communication but it involves 
+	context switch that also spends time.
+
+8. What is a lock?
+	A lock is a state where a thread or more than one is blocked from doing his 
+	job. The lock can be desired like when a thread accesses a critical section 
+	and locks all other threads outside it. A lock becomes a deadlock when 
+	accidentally a thread stays locked without an option to be released, an 
+	example is if a thread locks a mutex but never unlocks it, another thread 
+	can stay there forever.
+	
+9. What is a mutex?
+	A mutex is a special binary object that is used to lock and unlock critical 
+	sections. It is promised to be an atomic operation and that when it's locked 
+	any thread trying to lock it when its locked will be blocked inside it and 
+	be released (and lock again the mutex) only when the locking thread unlocks 
+	the mutex.
+
+10. What is a semaphore?
+	A semaphore is a counter that is used to tell if the resources in a critical 
+	section are available. It is atomic and when it is 0 it blocks any thread 
+	trying to check it.
+
+11. What are the differences between a mutex and a semaphore?
+	1. When would you use each?
+		I would use a semaphore when i want to prevent busy waiting when checking
+		the availability of a mutual resource. 
+		I would use a mutex to keep the critical section mutual exclusive.
+		
+	2. What are the differences between a mutex and a semaphore of size 1?
+		The big difference is that the only thread that can unlock the mutex is
+		the locking thread.
+
+12. What is a "race condition"?
+	A race condition happens when one or more threads/processes need to read or 
+	write to the same resource at the same time, this can cause unexpected 
+	results. 
+	
+13. How do you avoid race condition?
+	With muex.
+
+14. What is deadlock, and how is it caused?
+	A deadlock is a situation where one ore more threads are locked forever in 
+	a mutex or semaphore or condition variable. It can be caused by a thread 
+	that locked a mutex and never unlocked it, or a semaphore that got empty 
+	but was never filled.
+	
+15. How do you prevent deadlock?
+	You take care of the above bugs. 
+	
+16. How is a mutex implemented?
+	First it uses an atomic test and set, if the mutex is unlocked it just locks.
+	If it is locked then the thread is blocked until the locking thread releases 
+	it. It can block as many threads as needed inside it.
+	
+17. If the program is stuck on some part of the code, what are the possible
+reasons for this?
+	It is possible that there is a deadlock: or it's a thread entered a semaphore
+	that is empty forever, or a locked mutex that wasn't unlocked.
+	
+18. What is a critical section?
+	It is a section where race conditions can lead to harm in a mutual resource.
+	
+19. If you have a critical section, is there a difference between a resource 
+that is an int or a string?
+	Just if we want to make an atomic operation on that resource. Than in most 
+	computers an int is small enough to make an atomic operation on it, a string 
+	on the other hand can be very big and its not possible to make an atomic 
+	operation on it.
+
+20. Describe the Dining Philosophers problem.
+	It is a problem that was meant to describe the problems of mutual exclusion 
+	and deadlocks that can become out of them.
+	The problem tells about a number of philosophers (say 5) sitting on a round 
+	table each has a bowl full of spaghetti and a fork between each couple of 
+	bowls. Each philosopher has two possible states, eating and thinking.
+	Saying they cannot communicate with each other how can we be sure they wont 
+	starve. 
+
+21. Why Semaphores can't be reentrant?
+	Because every thread can free the lock.
+
+22. What is a reentrant mutex?
+	A reentrant mutex is a particular type of mutual exclusion device that may 
+	be locked multiple times by the same thread, without causing a deadlock.
+	While any attempt to perform the "lock" operation on an ordinary mutex would 
+	either fail or block when the mutex is already locked, on a recursive mutex 
+	this operation will succeed if and only if the locking thread is the one 
+	that already holds the lock. Typically, a recursive mutex tracks the number 
+	of times it has been locked, and requires equally many unlock operations to 
+	be performed before other threads may lock it.
+	
+23. Define the following:
+	1. condition variable:
+		A condition variable is a synchronization device that you can implement 
+		some complex conditions under which threads execute. 
+	2. spin-lock:
+		A lock which causes a thread trying to acquire it to simply wait in loop 
+		repeatedly checking if the lock is available. (Busy waiting)
+		
+	3. atomic operations:
+		An operation (assembly command) that is promised to happen in one operation 
+		knowing that it cannot be interrupted or called at the same time by more 
+		than one core.
+	
+	4. try-lock:
+		A function to only check if the lock is locked and continue if it is to 
+		do other things instead of blocking.
+	
+	5. sequential lock:
+		A method to make synchronized operations between two threads by making 
+		fast switches between them instead of using normal locks that are time 
+		wasting like blocking. 
+	
+	6. barrier: 
+		A barrier is another synchronization object that makes all the threads 
+		wait until the number of asked threads get to barrier_wait.
+	
+	7. polling:
+		Busy waiting on a lock.
+	
+	8. TLS:
+		Thread Local Storage, a variable that is global for one and only thread.
+	
+	10. reentrancy:
+		1. reentrant function:
+			A function that can be disturbed in the middle by a thread and get 
+			back to work without being corrupted.
+		
+		2. reentrant synchronization:
+			?????
+		
+System Calls:
+
+pthred_create():
+	Creates a new thread, it starts a new thread inside the calling process.
+	The new thread starts execution by invoking start_routine(), arg is passed
+	as the sole argument of start_routine(). Returns 0 on success or error num
+	on failure, and the contents of *thread are undefined.
+	
+pthread_self():
+	The function returns the ID of the calling thread. The function always succeeds.
+
+pthread_join():
+	The function waits for the thread specified by thread to terminate. If that 
+	thread has already terminated, then pthread_join() returns immediately. The 
+	thread specified by thread must be joinable.
+
+pthread_exit():
+	The function terminates the calling thread and returns a value via retval 
+	that (if the thread is joinable) is available to another thread in the same 
+	process that calls pthread_join().
+	
+pthread_attr_init();
+	The function initializes the thread attributes object pointed to by attr 
+	with default attribute values. After this call, individual attribyres of the
+	objects can be set using various related functions, and then the object can 
+	be used in one or more pthread_create() calls that create threads.
+
+pthread_attr_destroy():
+	When a thread attributes object is no longer required , it should be 
+	destroyed using the pthread_attr_destroy.
+
+pthread_attr_setdetachstate():
+	Sets the detach state of the threads attribute, use PTHREAD_CREATE_DETACHED
+	to make threads detachable, or PTHREAD_CREATE_JOINABLE to keep the thread 
+	joinable (his default attribute).
+	
+pthread_key_create():
+	The function creates a thread-specific data key visible to all threads in 
+	the process. Key values provided by pthread_key_create() are opaque objects
+	used to locate thread-specific data.
+	Although the same key value may be used by different threads, the values
+	bound to the key by pthread_setspecific() are maintained on a per-thread 
+	basis and persist for the life of the calling thread.
+	
+pthread_key_delete():
+	Deletes the data and resources given in pthread_key_create, Should not be
+	NULL, does not frees data related to the thread.
+	
+pthread_setspecific():
+	The function shall associate a thread-specific value with a key obtained via 
+	a previous call to pthread_key_create(). Different threads may bind different
+	values to the same key. Tese values are typically pointers to blocks of 
+	dynamically allocated memory that have been reserved for use by the calling 
+	thread.
+	
+pthread_getspecific:
+	The function returns a the value currently bound to the specified key on 
+	behalf of the calling thread. 
+
+pthread_cleanup_push()/pop();
+	These functions manipulate the calling thread's stack of thread-cancellation
+	clean-up handlers. A clean-up handler is a function that is automatically 
+	executed when a thread is canceled (or in various other circumstances 
+	described below). It might, for example, unlock a mutex so that it becomes 
+	available to other threads in the process.
+	
+	pthread_cleanup_push - Pushes routine onto the top of the stack of clean-up
+	handlers. When routine is later invoked, it will be given arg as its argument.
+	
+	pthread_cleanup_pop - Removes the routine at the top of the stack of clean-up 
+	handlers, and optionally executes it if execute is nonzero.
+	
+sem_init():
+	Initializes the unnamed semaphore at the address pointed to by sem. The 
+	value argument specifies the initial value for the semaphore.
+	The pshared argument indicates whether this semaphore is to be shared 
+	between the threads of a process, or between processes.
+	
+
+sem_destroy():
+	Destroys the unnamed semaphore at the address pointed to by sem. Only a 
+	semaphore that has been initialized by sim_init() should be destroyed.
+	
+sem_wait():
+	If the semaphore's value is greater then zero it decrement the counter value
+	and returns immediately, if it is zero it blocks until an other thread 
+	increments the counter or a signal handler interrupts the call. Before exit 
+	the wait decrements the counter (i.e. if count was 0 and it was incremented
+	to 1 it decrements it and exit leaving it as 0).
+
+sem_post():
+	increments the semaphore pointed to by sem. If the value was zero then 
+	another thread or process that was blocked in wait is released, then the 
+	value goes back to zero.
+	
+sem_getvalue();
+	Puts the current semaphore value into the int pointed by sval.
+	
+pthread_cond_init():
+	It initializes the condition variable referenced by cond with attributes 
+	referenced by attr. If attr is NULL, the default condition variable attributes
+	shall be used. The effect is the same as passing the adress of a default 
+	condition variable attributes object. Upon successful initialization, the
+	state of the condition variable shall become initialized.
+
+pthread_cond_destroy():
+	It shall destroy the given condition variable specified by cond. The object
+	becomes, in effect, uninitialized. An implementation may cause the function 
+	to set the object referenced by cond to an invalid value. A destroyed 
+	condition variable object can be reinitialized using pthread_cond_init(). 
+	The results of otherwise referencing the object after it has been destroyed 
+	are undefined.
+
+pthread_cond_broadcast():
+	These function shall unblock all threads currently blocked on the specified 
+	condition variable cond.
+
+pthread_cond_wait():
+	It shall block on a condition variable. It shall be called with mutex locked 
+	by the calling thread or undefined behavior results. It automatically 
+	releases mutex and cause the calling thread to block on the condition 
+	variable cond. Atomically here means "atomically with respect to access by 
+	another thread to the mutex and then the condition variable". That is, if 
+	another thread is able to acquire the mutex after the about-to-block thread 
+	has released it, then a subsequent call to pthread_cond_broadcast() or 
+	pthread_cond_signal() in that thread shall behave as if it were issued after
+	the about-to-block thread has blocked. 
+	
+pthread_setcanceltype():
+	The function sets the cancelability state of the calling tread to the value 
+	given to the value given in state. The previous cancelability state of 
+	the thread is returned in the buffer pointed to by oldstate. The state 
+	argument must have one of the following values: 
+		PTHREAD_CANCEL_ENABLE: The thread is cancelable. This is the default.
+		PTHREAD_CANCEL_DISABLE: Blocks cancelation requests until status changes.
+		PTHREAD_CANCEL_DEFERRED: The request is deferred until the thread next 
+			calls a function that is a cacellation point.
+		PTHREAD_CANCEL_ASYNCHRONOUS: Can be canceled at any time.
+	
+pthread_cancel()
+	The function sends a cancellation request to the thread thread. Whether and
+	when the target thread reacts to the request depends on twp attributes that 
+	are under the control of that thread: its cancelability state and type.
+	
+pthread_testcancel():
+	The function creates a cancellation point within the calling thread, so that 
+	a thread that is otherwise executing code that contains no cancellation 
+	points will respond to a cancellation request. If cancelability is disabled 
+	or no cancellation request is pending, then a call to pthread_testcancel() 
+	has no effect.
+
+pthread_mutex_init():
+	The function shall initialize the mutex referenced by mutex with attributes 
+	specified by attr. If attr is NULL, the default mutex attributes are used.
+	The effect shall be the same as passing the address of a default mutex 
+	attributes object.
+
+pthread_mutex_destroy():
+	The function shall destroy the mutex object referenced by mutex.
+	
+pthread_mutex_lock():
+	The object referenced by mutex shall be locked by calling the function.
+	If the mutex is already locked, the calling thread shall block until the 
+	mutex becomes available. 
+
+pthread_mutex_unlock():
+	The function shall release the mutex object referenced by mutex.
+	The thread which called pthread_mutex_lock should be the one to call the 
+	unlock function otherwise unexpected results can occur. 
