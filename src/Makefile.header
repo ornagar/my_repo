@@ -1,0 +1,36 @@
+#RD3 10.12.2014
+ARFLAGS = -crs
+AR = /usr/bin/ar $(ARFLAGS)
+RM = /bin/rm -f
+LN = /bin/ln -fs
+GREP = /bin/grep
+MAKE = /usr/bin/make
+
+PROJ_DIR = $(HOME)/svn/Proj
+INC_DIR = $(PROJ_DIR)/include
+SRC_DIR = $(PROJ_DIR)/src
+
+CC = /usr/bin/gcc
+CPP = /usr/bin/g++
+
+DEBUG_FLAGS = -g -D_DEBUG
+RELEASE_FLAGS = -O3 -DNDEBUG
+
+CPPDEBUG_FLAGS = $(DEBUG_FLAGS) 
+CPPRELEASE_FLAGS = $(RELEASE_FLAGS) 
+
+CFLAGS= -Wall -ansi -I$(INC_DIR) -std=c89 -pedantic -Werror
+CPPFLAGS= -Wall -ansi -I$(INC_DIR) -std=c++11
+
+ARCH = linux64
+
+#ARCH = raspi
+ifeq ($(ARCH),raspi)
+CC = echo
+AR = echo
+endif
+
+LIB_DIR = $(PROJ_DIR)/arch/$(ARCH)/libs
+BIN_DIR = $(PROJ_DIR)/arch/$(ARCH)/bin
+OBJ_DIR = $(PROJ_DIR)/arch/$(ARCH)/obj
+LDFLAGS = -L$(LIB_DIR)

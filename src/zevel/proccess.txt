@@ -1,0 +1,145 @@
+processes:
+
+1. What is a process?
+	A process is the dynamic instance of a program that is being executed.
+	The program is a static collection of instructions for the active process
+	to follow.
+
+2. What are a process's attributes and properties?
+	An image of the executable machine code, a private virtual memory, 
+	OS descriptors of resources allocated to the process (such as file 
+	descriptors and dota sources), security attributes and the proccessor state.
+	
+3. What resources are available to a process?
+	It's macine code image, a virtual memory, the ability to communicate with 
+	the OS and other processes throw signals.
+	
+4. What is a zombie process?
+	All processes that finish their work return their exit information to the 
+	parent process, if a child process has finished his work and his parent 
+	was not waiting (with wait() function family) for it to finish just keeps 
+	running as a zombie process. In case that a parent process exited before
+	releasing his children the the children are "adopted" by the init process
+	and he releases them.
+
+5. What is an orphan process?
+	When the parent process exits before the child process he becomes an orphan 
+	process. In unix like systems it is automatically adopted by the init process.
+	Even after being adopted by init it is called orphan. In other OS the 
+	orphans	can be killed immediately by the kernel.
+6. Name 6 different types of SIGNALS that may be sent to a process, and when 
+are they sent.
+	1. SIGSEGV: segmentation violation, sent when a process tries to access and
+	   illegal address.
+	2. SIGKILL: Kills the process, can not be handled by the process.
+	3. SIGTERM: Asks the process to exit immediately.
+	4. SIGFPE: Floating point exeption.
+	5. SIGSTOP: Stop executing, can not be handled by the process.
+	6. SIGINT: Terminal interrupt.
+7. Explain what is a signal handler.
+	A signal handler is a special function that waits for a specific signal to
+	come, and handles it. it can ignore the signal or do something with it.
+8. What happens when you run an executable file?
+	We ask some other process (Terminal) to create a new process containing the 
+	image of the executable machine code of the specific program.
+9. Given a high priority process, what will happen when an interrupt occurs?
+	It will stop doing what it's doing and handle the interrupt.
+	???
+10. What happens when a signal is sent to a process that is already handling a 
+signal?
+	It is a problematic situation where the handler should stop what he is doing
+	and handle the new signal. Thats why the signal handler should perform the
+	minimum expected from him like documenting the signal for the program to 
+	check periodically.
+11. What are the different possible states of a process?
+	Created, Waiting, Running, Blocked and Terminated.
+12. What is an asynchronous operation?
+	It is an operation that is not synchronized with the processes and when it 
+	comes it is handled by the CPU immediately.
+13. Why is the access to I/O slow?
+	Because the I/O devices are much slower then the CPU. The I/O devices 
+	usually need to read from slower memories then ram memory or even wait for 
+	users command which takes centuries in cpu time.
+
+
+shell commands:
+	fuser: Displays  the PIDs of processes using the specified files or ile 
+	systems. 
+	
+	gcore: Generate a core dump of a running program with process ID pid.
+	Produced file is equivalent to a kernel produced core file as if the process 
+	crashed (and if "ulimit -c" were used to set up an appropriate core dump 
+	limit). Unlike after a crash, after gcore the program remains running 
+	without any change.
+	
+	kill: Sends a signal (depends on the chosen signal) to a process (by pid).
+	killall: Sends a signal to all processes running any of the specified 
+	commands. The default signal of kill and killall is SIGTERM.
+	
+	pgrep: Looks through the currently running processes and lists the PISs
+	which match the selection criteria to stdout.
+	
+	pldd: List dynamic shared objects loaded into process.
+	
+	pmap: Report memory map of a process. Teh pmap command reports the memory
+	map of a process or processes.
+	
+	prtstat: Prints statistics of a process. The information comes from the 
+	/proc/PID/stat file.
+	
+	ps: Shows a static snapshot of current processes. If no arguments given
+	it shows the current terminal and children.
+	
+	top: Sows a dynamic real-time view of a running system.
+	It can display system summary information as well.
+	
+	pstree: Shows the running processes as a tree where "init" is the root.
+	
+	pwdx: Report current working directory of a process.
+	
+	nice: Run a program with modified scheduling priority.
+	renice: Alter priority of a running process.
+	snice: Like renice but not recommended.
+	
+System calls:
+	getpid/getppid: Get process/parent process id.
+	
+	setpgid, getpgid, setpgrp, getpgrp: All of these interfaces are used for
+	
+	getting and setting the process group ID (PGID) of a process.
+	
+	fork: Creates a new process by duplicating the calling process.
+	vfork: Creates a child process and blocks parent. 
+	clone: A wrapper function of fork does exactly the same exept it lets the 
+	child process to share parts of its execution context with the calling ps.
+	Clone is used mainly to creates threads.
+	
+	exec() family: Replaces the current process image with a new process image.
+	
+	wait() family: These system calls are used to wait for state changes in 
+	a child of the calling process, and obtain information about the child whose
+	state has changed. A state change is considered to be: the child terminated,
+	the child was stopped by a signal, or the child was resumed by a signal.
+	In the case of a terminated child, performing a wait allows the system to 
+	release the resources associated with the child. If a wait is not performed, 
+	then the terminated child remains in a "zombie" state.
+	
+	signal: Sets the disposition of the signal signum to handler, which is 
+	either SIG_IGN, SIG_DFL, or the address of a programmer-defined function.
+	
+	sigaction: The system call is used to change the action taken by a process
+	on receipt of a specific signal.
+	
+	kill: Send a signal to a process.
+	killpg: Send a signal to a process group.
+	
+	exit: An exit system call is a request for the operating system to collect 
+	all the resources of a process/thread before exiting.
+	
+	abort: The abort first unblocks the SIGABRT signal, and then raises that
+	signal for the calling process. This results in the abnormal termination
+	of the process unless the SIGABRT signal is caught and the signal handler
+	does not return.
+	If the abort function causes process termination, all open streams are
+	closed and flushed.
+	

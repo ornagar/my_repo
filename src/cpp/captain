@@ -1,0 +1,14 @@
+#!/bin/bash
+
+file="names.txt"
+len=$(wc -l $file | awk '{print $1;}')
+
+rand=$(($[ $RANDOM % len ] + 1))
+current=$(sed -n $rand'p' < $file)
+echo $current
+echo ""
+
+grep -v $current $file > .temp_file_sdfaoijfasidof 
+cat .temp_file_sdfaoijfasidof > $file
+rm .temp_file_sdfaoijfasidof
+
