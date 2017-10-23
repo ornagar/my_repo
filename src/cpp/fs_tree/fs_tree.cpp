@@ -3,6 +3,7 @@
 #include <memory>
 
 #include <dirent.h>
+#include <exception>
 #include <cstring>
 #include "fs_tree.hpp"
 
@@ -17,11 +18,13 @@ Directory::Directory(const std::string& name)
 
 void Directory::print(const std::string& pre) const 
 {
-    printf("%s", KBLU);
-    std::cout << pre << "_" << get_name() << std::endl;
-    printf("%s", KWHT);
+    
+    std::cout << pre << std::endl << pre << "___";
+    printf("%s", KRED);
+    std::cout << get_name() << std::endl;
+    printf("%s", KCYN);
     for (auto i : m_entries) {
-        i->print(pre + "  ");
+        i->print(pre + "   |");
     }
 }
 
@@ -41,7 +44,7 @@ std::shared_ptr<Entry> build_tree(const std::string& name)
     struct dirent *entry;
 
     if (!(dir = opendir(name.c_str())))
-        return nullptr;
+        throw std::invalid_argument(name.c_str());
 
     while ((entry = readdir(dir)) != nullptr) {
         if (entry->d_type == DT_DIR) {

@@ -86,7 +86,7 @@ inline void Directory::add_entry(std::shared_ptr<Entry> entry)
 
 inline void File::print(const std::string& pre) const 
 { 
-    std::cout << pre << "+" << Entry::get_name() <<std::endl; 
+    std::cout << pre << "_" << Entry::get_name() <<std::endl; 
 }
 
 } //namespace fs_tree

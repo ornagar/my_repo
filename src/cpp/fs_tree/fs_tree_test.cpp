@@ -1,3 +1,5 @@
+#include <exception>
+
 #include "fs_tree.hpp"
 
 using namespace ilrd;
@@ -9,11 +11,16 @@ int main(int argc, char **argv)
     if (argc > 1) {
         name = argv[1];
     }
-    
-    std::shared_ptr<Entry> entry = build_tree(name);
-    if (entry) {
-        entry->print_tree();
+    std::shared_ptr<Entry> entry;
+    try  {
+        entry = build_tree(name);
+    }catch (std::invalid_argument& i) {
+        std::cout << i.what() << std::endl;
+        return 1;
     }
+    
+  
+    entry->print_tree();
     
     return 0;
 }
