@@ -17,8 +17,9 @@ private:
 template <typename T>
 T& Singleton<T>::get_instance()
 {
-    static T s;
-    return s;
+    static T t;
+    
+    return t;
 }
 
 #endif //SINGLETON_HPP
