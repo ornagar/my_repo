@@ -1,14 +1,22 @@
-#include <iostream>
-#include <string>
-
 #include "singleton.hpp"
+
+#include <iostream>
+
+
 
 int main()
 {
-    std::string& s = Singleton<std::string>::get_instance();
-    std::string& f = Singleton<std::string>::get_instance();
-    
-    f = "fun fun fun";
-    std::cout << s << std::endl;
-    std::cout << f << std::endl;
+	//template <class T>
+	int* ptr1 =  MySingleton<int>::GetInstance();
+	//template <class T>
+	int* ptr2 =  MySingleton<int>::GetInstance();
+	double* ptr3 = MySingleton<double>::GetInstance();
+	
+	std::cout<<ptr1<<std::endl;
+	std::cout<<ptr2<<std::endl;
+	
+	MySingleton<double>::atexit_handler();
+	
+	ptr3 = MySingleton<double>::GetInstance();
+	std::cout <<"atexit:"<< ptr3 << std::endl;
 }

@@ -24,6 +24,7 @@ private:
 template <class T>
 T* MySingleton<T>::m_instance = nullptr;
 
+<<<<<<< HEAD
 template <class T>
 inline T*  MySingleton<T>::GetInstance(){
 	//static method that returns only instance of MySingletone
@@ -52,6 +53,14 @@ void MySingleton<T>::atexit_handler()
 { 
 	delete m_instance; 
 	m_instance = nullptr;
+=======
+template <typename T>
+T& Singleton<T>::get_instance()
+{
+    static T t;
+    
+    return t;
+>>>>>>> 52ee08dea657f26e98713b84a16eac23b484ea75
 }
 
 #endif  // SINGELTON_HPP
