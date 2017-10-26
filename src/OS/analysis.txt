@@ -1,25 +1,0 @@
-Flat profile:
-
-Each sample counts as 0.01 seconds.
-  %   cumulative   self              self     total           
- time   seconds   seconds    calls  ns/call  ns/call  name    
- 50.06      0.01     0.01    99171   100.95   100.95  Swap
- 50.06      0.02     0.01                             main
-
-			Call graph
-
-
-granularity: each sample hit covers 2 byte(s) for 49.94% of 0.02 seconds
-
-index % time    self  children    called     name
-                                                 <spontaneous>
-[1]    100.0    0.01    0.01                 main [1]
-                0.01    0.00   99171/99171       Swap [2]
------------------------------------------------
-                0.01    0.00   99171/99171       main [1]
-[2]     50.0    0.01    0.00   99171         Swap [2]
------------------------------------------------
-
-Index by function name
-
-   [2] Swap                    [1] main
