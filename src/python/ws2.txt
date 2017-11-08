@@ -1,0 +1,25 @@
+1. What are mutable or immutable objects?
+	mutable objects are objects that their memory is accessible to 
+	changes, like lists, dictionaries. immutable: primitives, strings, 
+	tuplets.
+	
+2. What is an exception? Why is it needed?
+	An exception occours when an unexpected or unwanted behavior happens
+	in the program, it's ment to stop the normal execution and find the 
+	part of the program that is willing to handle the exception. if not 
+	caught in an "try" block the excecution ends sending the type 
+	of exception to stderr. The exceptions are a very powerfull tool 
+	that throws an acknowledgment that can be caught in any level of calling functions.
+
+3. What will the following program print? Why?
+	4
+	3
+	n = 3 -> is a global object and n = 4 is local to foo, so print inside foo will print its 
+	local n and the last print happens in the global scope so it will print the only n he knows.
+
+4. What will the following program print? Why
+	[4]
+	[4]
+	lists are passed by reference so the assignment on n[0] go to the object pointed by n 
+	in both scopes and changes it.
+	

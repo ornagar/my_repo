@@ -1,0 +1,84 @@
+1. What is the difference between = and ==?
+	assignment operator =
+	is equal operator ==
+
+2. What is the use of i++ and ++i in different languages and why it is 
+not necessary in python?
+	it is used mostly for iteration (example: for (i = 0; i < 10; ++i)
+	in other languages and in python it is not needed because we use 
+	iterators instead of index based loops. (example: for i in range())
+	therefore the ++ would not be in such use as in c++. 
+	I belive that the reason above is good enough for the language 
+	writers to save from them and us the overhead that would come with 
+	four new keywords (++i, i++, --i, i--).
+
+3. What is the difference between a list, set and dictionary?
+	a list is indexed, a set is unordered, and a dictionary recieves a 
+	key from the user for each entry. syntax: 
+				list = [1, 14, 3] empty_list = []
+				dictionary = {1: "a", 2: "ok"} empty_dict = {}
+				set = {2, 4, 1, 5} empty_set = () or set()
+				
+4. What is an object and what is a name?
+	??????
+	
+5. What does dynamic type system means and what are it's consequences?
+	It means that instead of static type checking(during compilation)
+	the type checking is done in run time so each operation is evaluated
+	during execution and checked for type errors. The consequence is 
+	a pretty heavy overhead in run time wich leads to a time performance 
+	cost.
+	
+6. What are a stack and a queue, in wich cases will we use each?
+	we would use a stack when lifo is needed and a queue for lifo.
+	
+7. What will be the output of the following code? Why?
+x = [1, 2, 3]
+y = x
+y[1] = 8
+print x, y
+	[1, 8, 3] [1, 8, 3] in python lists are passed by reference so y is 
+	a reference to x.
+	
+8. Summarized.
+
+9. Which reserved classes of identifiers exists?
+	_* it is used by the interpreter to store the result of last evaluation
+	__*__ system defined names like __init__
+	__* used to create "private" data members in a class it actualy 
+		tells the interpreter to do name mangling on that member.
+		
+10. What are the four types of numeric literals?
+	int, long, float and imaginary numbers
+	
+11. What is a raw string literal?
+	a raw string literal is prefixed with an 'r' or 'R', and it ignore 
+	the known esqape sequences.
+	
+12. What will be the output of the following command? "type('2')"
+	It wouldn't output anything unless we put print before, then:
+		<type 'str'>
+		
+13. What is the difference between an expression and a statement?
+	Expressions contain identifiers, literals and operators and can be
+	reduced to some kind of "value", which can be any Python object.
+	A statement is everything that can make up a line(or more) including
+	expressions.
+	
+14. How can you perform string concatenation?
+	str = "hello " + "world" -> str == "hello world"
+	
+15. What is the output of the following code?
+str1 = "hello"
+str2 = "hello"
+str3 = "hi"
+print (str1 == str2)
+print (str1 == str3)
+str2 = str3
+print (str1 == str2)
+print (str1 == str3)
+	output:
+		True
+		False
+		False
+		False
