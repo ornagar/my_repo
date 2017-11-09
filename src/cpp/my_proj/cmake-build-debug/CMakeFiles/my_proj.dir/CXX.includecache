@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Base.cpp
+Base.h
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Base.h
+
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Base.h
+
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Derived.cpp
+Derived.h
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Derived.h
+
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Derived.h
+Base.h
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Base.h
+
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/main.cpp
+iostream
+-
+Base.h
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Base.h
+Derived.h
+/home/xyz/my_repo/my_repo/src/cpp/my_proj/Derived.h
+

@@ -13,7 +13,7 @@ def chat_client():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.settimeout(2)
      
-    # connect to remote host
+    # connect to server
     try :
         s.connect((host, port))
     except :
@@ -24,7 +24,7 @@ def chat_client():
     sys.stdout.write('[Me] ')
     sys.stdout.flush()
      
-    while 1:
+    while True:
         socket_list = [sys.stdin, s]
          
         # Get the list sockets which are readable

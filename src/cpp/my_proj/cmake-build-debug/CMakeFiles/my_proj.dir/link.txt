@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/my_proj.dir/main.cpp.o CMakeFiles/my_proj.dir/Base.cpp.o CMakeFiles/my_proj.dir/Derived.cpp.o  -o my_proj 

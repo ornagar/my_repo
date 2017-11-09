@@ -14,7 +14,7 @@ def search_wiki():
 	webbrowser.exit()
 
 #TODO: work on it
-def copy_dictionary(path):
+def copy_dictionary(path="dictionary.txt"):
     my_dictionary = {}
     new_str = ""
     with open(path, "r") as f:
@@ -32,12 +32,20 @@ def my_post(dictionary):
     print(r.status_code, r.reason)
 
 
+class A:
+	def __init__(self):
+		self.x = 4
+		
+
+
 if __name__ == "__main__":
 	#search_wiki()
-    my_dict = {'number': 100, 'type': 'test', 'action': 'show'}
-    #my_post(my_dict)
-    print copy_dictionary("dictionary.txt")
-    import tkinter
-    top = tkinter.Tk()
-    # Code to add widgets will go here...
-    top.mainloop()
+	my_dict = {'number': 100, 'type': 'test', 'action': 'show'}
+	#my_post(my_dict)
+	#print copy_dictionary()
+	a = A()
+	print a.x
+	a.y = 14
+	print a.y
+	a.__dict__
+	
