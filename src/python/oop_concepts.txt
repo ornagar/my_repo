@@ -1,0 +1,101 @@
+Encapsulation:
+	encapsulation is the inclusion-within a program object-of all the resources 
+	needed for the object to function, basically, the methods and the data.
+	In OOP the encapsulation is mainly achieved by creation classes, the 
+	classes expose public methods and properties. A class is kind of a 
+	container or capsule or a cell,  which encapsulate a set of methods, 
+	attribute and properties to provide its indented functionalities to other 
+	classes. In that sense, encapsulation also allows a class to change its 
+	internal implementation without hurting the overall functioning of the 
+	system. That idea of encapsulation is to hide how a class does its 
+	business, while allowing other classes to make requests of it.
+	
+	
+Abstraction:
+	Abstraction is an emphasis on the idea, qualities and properties rather than
+	the particulars (a suppression of detail). The importance of abstraction is 
+	derived from its ability to hide irrelevant details and from the use of 
+	names to reference objects. Abstraction is essential in the construction of
+	programs. It places the emphasis on what an object is or does rather than
+	how it is represented or how it works. Thus, it is the primary means of 
+	managing complexity in large programs.
+	
+	
+Generalization:
+	Generalizationreduces complexity by replacing multiple entities which 
+	perform similar functions with a single construct. Generalization is the 
+	broadening of application to encompass a larger domain of objects of the 
+	same or different type. Programming languages provide  generalization 
+	through variables, parameterization, generics and polymorphism. It places
+	the emphasis on the similarities between objects. Thus, it helps to manage
+	complexity by collecting individuals into groups and providing a 
+	representative which can be used to specify any individual of the group.
+	
+	
+Inheritance:
+	The ability of a new class to be created, from an existing class by 
+	extending it, is called inheritance.
+	
+	public class Exception {
+		
+	}
+	
+	public class IOException : Exception {
+		
+	}
+	
+	According to the above example the new class(IOException), which is called 
+	the derived class or subclass, inherits the members of an existing 
+	class(Exception), which is called the base class or super-class. The class 
+	IOException can extend the functionality of the class Exception by adding 
+	new types and methods and by overriding existing ones.
+	Just like abstraction is closely related with generalization, the 
+	inheritance is closely related with specialization. It is important to 
+	discuss those two concepts together with generalization to better understand
+	and to reduce the complexity.
+	
+	One of the most important relationships among objects in the real world is 
+	specialization, which can be described as the "is-a" relationship. When we 
+	say that a dog is a mammal, we mean that the dog is a specialized kind of
+	mammal. It has all the characteristics of any mammal(it bears live young, 
+	nurses with milk, has hair), but it specializes these characteristics to 
+	the familiar characteristics of canis domesticus. A cat is also a mammal. 
+	As such, we expect it to share certain characteristics with the dog that 
+	are generalized in Mammal, but to differ in those characteristics that are 
+	specialized in cats.
+	
+
+Polymorphism:
+	Polymorphism is a generic term that means 'many shapes'. More precisely 
+	Polymorphisms means the ability to request that the same operations be 
+	performed by a wide range of different types of things.
+	
+	At times, i used to think that understanding OOP concepts have made it 
+	difficult since they have grouped under four main concepts, while each 
+	concept is closely related with one another. Hence one has to be extremely 
+	careful to correctly understand each concept separately, while understanding 
+	the way each related with other concepts.
+	
+	In OOP the polymorphism is achieved by using many different techniques named
+	method overloading, operator overloading, and method overriding.
+	
+	
+Class:
+	A class is simply a representation of a type of object. It is the blueprint, 
+	or plan, or template, that describes the details of an object. A class is 
+	the blueprint from which the individual objects are created. Class is 
+	composed of three things: a name, attributes and operations.
+	
+	In real world, you'll often find many individual objects all of the same 
+	kind. As an example, there may be thousands of other bicycles in existence,
+	all of the same make and model. Each bicycle has built from the same 
+	blueprint. In object-oriented terms, we say that the bicycle is an instance 
+	of the class of objects known as bicycles.
+	
+	In the software world, though you may not have realized it, you have already
+	used classes. For example, the TextBox control, you always used, is made 
+	out of the TextBox class, which defines its apperance and capabilities. 
+	Each time you drag a TextBox control, you are actually creating a new 
+	instance of the TextBox class.
+	
+
