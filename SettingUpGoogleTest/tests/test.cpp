@@ -25,5 +25,5 @@ TEST_F(ClassDeclaration, nameOfTheTest2) {
     obj.setAge(58);
     ASSERT_THAT(57, testing::Eq(obj.getAge()));
 }
-    
+
 }

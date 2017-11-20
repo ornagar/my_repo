@@ -20,13 +20,13 @@ void init() {
 
 void display(void) {
 
-double x = group.get_center().getx();
+	double x = group.get_center().getx();
     ++x;
     group.add(&t);
     group.add(&c);
     group.add(&r);
     
-x = group.get_center().getx();
+	x = group.get_center().getx();
     ++x;
     glClear(GL_COLOR_BUFFER_BIT);
 
