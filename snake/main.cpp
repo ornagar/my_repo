@@ -1,5 +1,8 @@
+
+// compile with this: **gdp11 main.cpp -lGL -lGLU -lglut**
+
 #include <iostream>
-#include <string>
+
 
 #include "Snake.hpp"
 
@@ -78,16 +81,16 @@ void display(void) {
 
 void onKeyboard(unsigned char key, int x, int y) {
     switch(key) {
-        case 'W': case 'w':
+        case 72: case 'w':
             snake.move_up();
             break;
-        case 'A': case 'a':
+        case 75: case 'a':
             snake.move_left();
             break;
-        case 'S': case 's':
+        case 80: case 's':
             snake.move_down();
             break;
-        case 'D': case 'd':
+        case 77: case 'd':
             snake.move_right();
             break;
     }
@@ -123,7 +126,6 @@ int main( int argc, char **argv )
     glutCreateWindow("SNAKE");
 
     init();
-
 
     //glutFullScreen();
     glutKeyboardFunc(onKeyboard);

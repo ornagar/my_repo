@@ -3,7 +3,7 @@ CC = g++
 CFLAGS = -std=c++11 -Wall -pedantic -D_DEBUG -g
 
 snake.out :
-	 $(CC) $(CFLAGS) main.cpp -lGL -lGLU -lglut  -o ws1.out 
+	 $(CC) $(CFLAGS) main.cpp -lGL -lGLU -lglut  -o snake 
 
 .PHONY : clean
 clean :

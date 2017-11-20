@@ -13,6 +13,7 @@
 class Apple {
 public:
     Apple() : m_location(std::rand() % MAX_WIDTH + 1, std::rand() % MAX_HEIGHT + 1) {}
+
     void change_location() {
         Point next(std::rand() % MAX_WIDTH, std::rand() % MAX_HEIGHT);
         m_location = next;
