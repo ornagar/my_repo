@@ -51,4 +51,18 @@ private:
     int m_y;
 };
 
+
+
+bool operator==(const Point& lhs, const Point& rhs) {
+    static const int RADIUS = 9;
+    if ((lhs.getM_x() >= rhs.getM_x() - RADIUS) &&
+        (lhs.getM_x() <= rhs.getM_x() + RADIUS) &&
+        (lhs.getM_y() >= rhs.getM_y() - RADIUS) &&
+        (lhs.getM_y() <= rhs.getM_y() + RADIUS)) {
+        return true;
+    }
+
+    return false;
+}
+
 #endif //SNAKE_POINT_HPP

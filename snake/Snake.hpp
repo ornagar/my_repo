@@ -113,10 +113,7 @@ public:
     }
 
     bool check_if_apple_eaten() {
-        if ((m_body.front().getM_x() >= m_apple.get_location().getM_x() - m_dist) &&
-                (m_body.front().getM_x() <= m_apple.get_location().getM_x() + m_dist) &&
-            (m_body.front().getM_y() >= m_apple.get_location().getM_y() - m_dist) &&
-                (m_body.front().getM_y() <= m_apple.get_location().getM_y() + m_dist)) {
+        if (m_body.front() == m_apple.get_location()) {
             grow();
             m_apple.change_location();
             return true;
@@ -128,7 +125,20 @@ public:
     bool check_boundries() {
 
         return (m_body[0].getM_x() < 640 && m_body[0].getM_y() < 480 &&
-                m_body[0].getM_x() > 0 && m_body[0].getM_y() > 0);
+                m_body[0].getM_x() > 0 && m_body[0].getM_y() > 0 && check_body());
+    }
+
+    bool check_body() {
+        bool head_flag = false;
+        for (auto& i : m_body) {
+            if (head_flag) {
+                if (m_body[0] == i) {
+                    return false;
+                }
+            }
+            head_flag = true;
+        }
+        return true;
     }
 
     void display() {

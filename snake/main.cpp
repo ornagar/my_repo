@@ -81,16 +81,16 @@ void display(void) {
 
 void onKeyboard(unsigned char key, int x, int y) {
     switch(key) {
-        case 72: case 'w':
+        case 'W': case 'w':
             snake.move_up();
             break;
-        case 75: case 'a':
+        case 'A': case 'a':
             snake.move_left();
             break;
-        case 80: case 's':
+        case 'S': case 's':
             snake.move_down();
             break;
-        case 77: case 'd':
+        case 'D': case 'd':
             snake.move_right();
             break;
     }
@@ -101,19 +101,23 @@ void onKeyboard(unsigned char key, int x, int y) {
 
 void timer(int t) {
     snake.advance();
+    static int speed = 100;
     std::cout << "move" << std::endl;
     if (snake.check_if_apple_eaten()) {
 
-        num += 1;
+        num += 9;
         title = "score: ";
         title += Itoa(num);
 
+        if (num % 100 < 9) {
+            speed -= 10;
+        }
         glutSetWindowTitle(title.c_str());
     }
     if (!snake.check_boundries()) {
         glutDestroyWindow(1);
     }
-    glutTimerFunc(80, timer, 0);
+    glutTimerFunc(speed, timer, 0);
     glutPostRedisplay();
 }
 
@@ -123,7 +127,7 @@ int main( int argc, char **argv )
     glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
     glutInitWindowPosition(200, 200);
     glutInitWindowSize(640, 480);
-    glutCreateWindow("SNAKE");
+    glutCreateWindow(title.c_str());
 
     init();
 
