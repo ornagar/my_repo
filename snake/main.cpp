@@ -105,12 +105,12 @@ void timer(int t) {
     std::cout << "move" << std::endl;
     if (snake.check_if_apple_eaten()) {
 
-        num += 9;
+        num += 8;
         title = "score: ";
         title += Itoa(num);
 
-        if (num % 100 < 9) {
-            speed -= 10;
+        if (num % 80 == 0) {
+            speed = (speed == 10) ? 10 : speed - 10;
         }
         glutSetWindowTitle(title.c_str());
     }

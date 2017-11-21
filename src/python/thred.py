@@ -174,4 +174,3 @@ processed = len(done_queue.items)
 polled = sum(t.polled_count for t in threads)
 print('Processed', processed, 'items after polling', polled, 'times')
 """
-print("שלום")
