@@ -1,3 +1,0 @@
-/home/xyz/my_repo/my_repo/snake/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/xyz/my_repo/my_repo/snake/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/xyz/my_repo/my_repo/snake/cmake-build-debug/CMakeFiles/snake.dir
