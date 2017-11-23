@@ -1,27 +1,14 @@
-import httplib
-import sys
+import socket
 
-#get http server ip
-http_server = sys.argv[1]
-#create connection
-conn = httplib.HTTPConnection(http_server)
+clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+clientsocket.connect(("127.0.0.1", 12345))
 
-while True:
-	cmd = raw_input('input command (ex. GET index.html): ')
-	cmd = cmd.split()
-	
-	if cmd[0] == 'exit':
-		break
-	
-	#request command to server
-	conn.request(cmd[0], cmd[1])
-	
-	#get response from server
-	rsp = conn.getresponse()
-	
-	#print server response and data
-	print(rsp.status, rsp.reason)
-	data_received = rsp.read()
-	print(data_received)
-	
-conn.close()
+msg = "Hello World from client"
+
+print('client sending:', msg)
+clientsocket.send(msg)
+
+msg = clientsocket.recv(1024)
+print "client received: "+msg
+
+clientsocket.close()
