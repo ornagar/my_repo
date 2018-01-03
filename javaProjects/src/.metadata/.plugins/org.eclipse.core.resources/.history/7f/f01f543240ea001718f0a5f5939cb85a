@@ -1,0 +1,98 @@
+
+public class VendingMachine {
+	private State state = State.DISCONNECTED;
+	private int coins = 0;
+	private Drinks drinks = new Drinks(); // TODO: make class drinks.
+	
+	static private enum State {
+		DISCONNECTED {
+			void connect(VendingMachine v) {
+				System.out.println("Connecting...");
+				System.out.println("Loading system...");
+				System.out.println("Testing sensores...");
+				System.out.println("Loading Completed...");
+				System.out.println("Connected!!");
+				v.state = State.IDLE;
+			}
+			
+			void insertCoin(VendingMachine v, int coin) {
+				System.err.println("Disconnected, take your coins back");
+			}
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			void timeOut(VendingMachine v) {
+				
+			}
+		},
+		IDLE {
+			void connect(VendingMachine v) {
+				System.err.println("Allready connected, leave me alone!");
+			}
+			
+			void insertCoin(VendingMachine v, int coin) {
+				System.out.println("total of: " + (v.coins + coin) + "$ inserted");
+				v.state = State.HAS_COINS;
+			}
+			void chooseDrink(VendingMachine v) {
+				System.err.println("first insert coins...");
+			}
+			void timeOut(VendingMachine v) {
+				
+			}
+		},
+		HAS_COINS {
+			void connect(VendingMachine v) {
+				v.state = State.IDLE;
+			}
+			
+			void insertCoin(VendingMachine v, int coin) {
+				System.err.println("Disconnected, take your coins back");
+			}
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			void timeOut(VendingMachine v) {
+				
+			}
+		},
+		DELIVERING {
+			void connect(VendingMachine v) {
+				v.state = State.IDLE;
+			}
+			
+			void insertCoin(VendingMachine v, int coin) {
+				System.err.println("Disconnected, take your coins back");
+			}
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			void timeOut(VendingMachine v) {
+				
+			}
+		},
+		TRANSACTION_COMPLETE {
+			void connect(VendingMachine v) {
+				v.state = State.IDLE;
+			}
+			
+			void insertCoin(VendingMachine v, int coin) {
+				System.err.println("Disconnected, take your coins back");
+			}
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			void timeOut(VendingMachine v) {
+				
+			}
+		};
+		
+		abstract void connect(VendingMachine v);
+		abstract void insertCoin(VendingMachine v, int coin);
+		abstract void chooseDrink(VendingMachine v);
+		abstract void timeOut(VendingMachine v);
+		static void timeut() {
+			new State();
+		}
+	}
+}

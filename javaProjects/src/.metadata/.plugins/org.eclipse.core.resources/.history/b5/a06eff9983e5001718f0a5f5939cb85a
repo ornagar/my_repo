@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+package il.co.ilrd;
+
+/**
+ * @author Or Nagar
+ *
+ */
+public class LinkedList {
+	
+	private class Node {
+		private Node m_next = null;
+		private Object m_data = null;
+		
+		public Node() {
+			
+		}
+		
+		public Node(Object data) {
+			m_data = data;
+		}
+		
+	}
+}

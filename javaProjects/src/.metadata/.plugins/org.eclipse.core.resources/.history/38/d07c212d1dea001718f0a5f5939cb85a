@@ -1,0 +1,52 @@
+package il.co.ilrd;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestSingletons {
+
+	@Test
+	void test1() {
+		Singleton1.foo1();
+		Singleton1 s1 = Singleton1.getInstance();
+		Singleton1 s2 = Singleton1.getInstance();
+		assertTrue(s1 == s2);
+	}
+	
+	@Test
+	void test2() {
+		Singleton2 s = Singleton2.getInstance();
+		Singleton2.foo2();
+		Singleton2 s1 = Singleton2.getInstance();
+		Singleton2 s2 = Singleton2.getInstance();
+		s2.foo();
+		System.out.println(s2.bar(s));
+		
+		assertTrue(s1 == s2);
+	}
+	
+	@Test
+	void test3() {
+		Singleton3.foo3();
+		Singleton3 s1 = Singleton3.getInstance();
+		Singleton3 s2 = Singleton3.getInstance();  
+		assertTrue(s1 == s2);    
+	}
+
+	@Test
+	void test4() {
+		Singleton4.foo4();
+		Singleton4 s1 = Singleton4.getInstance();
+		Singleton4 s2 = Singleton4.getInstance();
+		assertTrue(s1 == s2);
+	}
+	
+	@Test
+	void test5() {
+		Singleton5.foo5();
+		Singleton5 s1 = Singleton5.GETINSTANCE;
+		Singleton5 s2 = Singleton5.GETINSTANCE;
+		assertTrue(s1 == s2);
+	}
+}

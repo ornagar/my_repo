@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestSingletons" project="Singletons" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="il.co.ilrd.TestSingletons" time="0.03" displayname="TestSingletons" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]">
+    <testcase name="test1" classname="il.co.ilrd.TestSingletons" time="0.017" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test1()]"/>
+    <testcase name="test2" classname="il.co.ilrd.TestSingletons" time="0.002" displayname="test2()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test2()]"/>
+    <testcase name="test3" classname="il.co.ilrd.TestSingletons" time="0.002" displayname="test3()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test3()]"/>
+    <testcase name="test4" classname="il.co.ilrd.TestSingletons" time="0.003" displayname="test4()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test4()]"/>
+    <testcase name="test5" classname="il.co.ilrd.TestSingletons" time="0.005" displayname="test5()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test5()]"/>
+  </testsuite>
+</testrun>

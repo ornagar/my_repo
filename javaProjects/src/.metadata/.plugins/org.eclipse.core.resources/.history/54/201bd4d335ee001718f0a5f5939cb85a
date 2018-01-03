@@ -1,0 +1,48 @@
+package il.co.ilrd;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+
+public abstract class Entry {
+	private String name;
+	
+	public Entry(String name) {
+		this.name = name;
+	}
+	
+	abstract public void printTree();
+	
+	public static Entry buildTree(String rootPath) throws IOException {
+		Path path  = Paths.get(rootPath);
+		
+		Directory root = new Directory(rootPath);
+		
+		Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+    
+			@Override
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+				String fileString = file.toAbsolutePath().toString();
+				if (!file.toFile().isDirectory()) {
+					Entry en = new File(file.toAbsolutePath().toString()));
+					Object a = new File("hejks");
+					root.addEntry(en);
+				}
+				//System.out.println("pathString = " + fileString);
+				
+				if(fileString.endsWith(File.separator + "Snake.hpp")){
+					System.out.println("file found at path: " + file.toAbsolutePath());
+					return FileVisitResult.TERMINATE;
+				}
+				return FileVisitResult.CONTINUE;
+			}
+		});
+		
+		return root;
+}
+}

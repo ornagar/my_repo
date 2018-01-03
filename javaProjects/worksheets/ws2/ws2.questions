@@ -1,0 +1,158 @@
+1. What is the difference between an object and a class?
+	An object is an instance of a class, where the class is the blueprint 
+	for making an instance of that type.
+	
+2. What is the difference between Local variables, Class variable and 
+Instance variables?
+	* Local variables belong to the method.
+	  Class variables are static variables for a class.
+	* Instance variables are members of each instance and may be different 
+	  between other instances.
+
+3. What are the eight primitive data types supported by the Java programming 
+language? And what is their size?
+	bool(undefined size), byte(1 byte), short(2 bytes), char(2 bytes), 
+	int(4 bytes), float(4 bytes), long(8 bytes), double(8 bytes).
+	
+4. Can you declare an unsigned int variable in java?
+	It's not possible in java, the options are to use a long if large values are
+	needed, or using Integer class that since java 8 has methods for unsigned 
+	operations.
+	
+5. What would you use if you want to perform mathematical operations on very 
+large numbers?
+	Long, or BigInteger class.
+
+6. Where are primitives stored? Where are objects stored?
+	Primitives are stored on the stack and objects store a reference on the 
+	stack while the object itself is allocated on the heap. arrays act as objects.
+	
+7. Of what type is the identifier of an object you manipulate?
+	ObjID.
+	
+8. Can you change a String object?
+	The string itself is immutable, so any change will create a new string.
+	
+9. What would you use to build a String?
+	???
+	
+10. What are the differences between scalar types and scalar objects? What are 
+the conversion costs?
+	The first is a primitive data type and the second is a wrapper for the first.
+	Each conversion envolves a calling to a method.
+	
+11. What is autoboxing and when does it happen?
+	It is an implicit conversion from primitive to wrapper. It happens when 
+	an expresion expects an Integer or Character and we send it a primitive (int, char).
+	
+12. What is the problem with the following code?
+
+	Integer sum = 0;
+	for (int i = 1000; i < 5000; i++) {
+		sum += i;
+	}
+	
+	The problem is that an autoboxing happens for each time "sum += i" happens.
+	
+13. What will be the output of the following code?
+	
+	Integer one = new Integer(1);
+	Integer anotherOne = new Integer(1);
+	if (one == anotherOne) {
+		System.out.println("both one are equal");
+	} else {
+		System.out.println("Both one are not equal");
+	}
+	
+	It will print "Both one are not equal" because the == operator checks the 
+	references for equality and not the value stored inside the class.
+	I would use the equals() method on them.
+	
+14. What is the difference between equals() method and ==?
+	In the beginning there is no difference but the equals() can be overriden to
+	act as expected.
+	
+15. What error do you get when writing the following code?
+	
+	int x = 1;
+	{
+		int x = 2;
+	}
+	
+	error: variable x is already defined in method main(String[]).
+	
+16. Can you instantiate a package-private object in the same package? Outside?
+	Yes, No.
+	
+17. How can you define constants in java?
+	using the final keyword.
+
+18. Can an object be constant? How?
+	I can make it immutable.
+	
+19. What is a blank final? When does it have to be initialized?
+	Its a final variable that hasn't been initialized. We have to initialize it 
+	before using it the first time or we will receive a compilation error.
+	
+20. Why is it impossible to implement a classical swap functions?
+	Because the parameters are sent by value in normal cases. We would use a 
+	method inside the objects for that or send an array or a list to the function.
+	
+21. What is aliasing?
+	When assigning an object to another variable we are aliasing it because now 
+	the same object has more than one reference or alias.
+	
+22. What is the problem with the following code?
+	
+	short s1 = 3;
+	short s2 = 1;
+	short s3 = s1 & s2;
+	
+	The code would not compile due to Promotion. When s1 & s2 evaluate it returns
+	an int so the compiler lets us know that assigning an int to s3 may cause to
+	lost data.
+	
+23. When are static initialization blocks called?
+	One time when the class first instantiate.
+	
+24. When are non-static initialization blocks called?
+	Every time an object gets instantiate (before the constructor).
+	
+25. In which order are initialization blocks run?
+	In the order that they where written.
+	
+26. In which order are instatnce variables initialized?
+	In the order they are written.
+	
+27. Where are arrays stored?
+	On the heap.
+	
+28. What is the comparator interface? What does it permit? What is the 
+difference between comparator and comparable?
+	Its an interface that we implement when we want to be able to sort using 
+	more than one data member. We implement a new class that we send to the 
+	sorting function with the class to sort.
+	
+29. What happens if you try to access an index greater than the length of the 
+array?
+	An exception "ArrayIndexOutOfBoundsException" will be thrown.
+	
+30. What are the default values in Java and When are they guaranteed?
+	0 or null. they are not guaranteed in local variables there the compiler 
+	expects an initialization before the use.
+	
+31. Which library of classes is automatically brought into every Java file?
+	java.lang
+	
+32. What is the enhanced for loop? What does it permit?
+	It's a special syntaxed for loop that iterates throw containers.
+	
+33. What is an ArrayList? What is the difference with Array? What is the 
+difference with LinkedList? When would you use each?
+	It's a dynamic array. It can grow and shrink. A LinkedList doesn't support 
+	random access.
+	
+34. What is the finalize method?
+	A method called by the GC before collection.
+	
+

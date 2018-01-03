@@ -1,0 +1,35 @@
+package il.co.ilrd;
+
+import java.io.File;
+
+public abstract class Entry {
+	protected String name;
+	
+	public String getName() {//TODO: remove.
+		return name;
+	}
+	
+	public Entry(String name) {
+		this.name = name;
+	}
+	
+	public void printTree() { print("├─"); }
+	abstract void print(String pre);
+	
+	public static Entry buildTree(String rootPath) {
+		Directory root = new Directory(rootPath);
+		File file = new java.io.File(rootPath);
+		File[] currentFiles = file.listFiles();
+		
+		for (File i : currentFiles) {
+			if (i.isFile()) {
+				root.addEntry(new il.co.ilrd.File(i.toString()));
+			}
+			if (i.isDirectory()) {
+				root.addEntry(buildTree(i.toString()));
+			}
+		}
+		
+		return root;
+	}
+}

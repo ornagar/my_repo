@@ -1,0 +1,9 @@
+package il.co.ilrd;
+
+public enum Singleton4 {
+	GETINSTANCE;
+	
+	public void foo4() { 
+		System.out.println("inside foo3()"); 
+	}
+}

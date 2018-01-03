@@ -1,0 +1,13 @@
+package il.co.ilrd;
+
+public enum Singleton5 {
+	GETINSTANCE;
+	
+	public static void foo4() { 
+		System.out.println("inside foo3()"); 
+	}
+	
+	public static Singleton5 getInstance() {
+		return Singleton5.GETINSTANCE;
+	}
+}

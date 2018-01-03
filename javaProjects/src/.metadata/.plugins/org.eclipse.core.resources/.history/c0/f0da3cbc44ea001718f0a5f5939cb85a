@@ -1,0 +1,94 @@
+
+public class VendingMachine {
+	private State state = State.DISCONNECTED;
+	private int coins = 0;
+	//private Drinks drinks = new Drinks(); // TODO: make class drinks.
+	final private static int PRICE = 5;
+	
+	public void connect() { 
+		state.connect(this);
+		System.out.println("Current state is: " + state + '\n');
+	} 
+	
+	void insertCoin(int coin) {
+		state.insertCoin(this, coin);
+		System.out.println("Current state is: " + state + '\n');
+	}
+	
+	void chooseDrink() {
+		state.chooseDrink(this); 
+		System.out.println("Current state is: " + state + '\n');
+	}
+	
+	void timeOut() {
+		state.timeOut(this);
+		System.out.println("Current state is: " + state + '\n');
+	}
+	
+	static private enum State {
+		DISCONNECTED {
+			@Override
+			void connect(VendingMachine v) {
+				System.out.println("Connecting...");
+				System.out.println("Loading system...");
+				System.out.println("Testing sensores...");
+				System.out.println("Loading Completed...");
+				System.out.println("Connected!!");
+				v.state = IDLE;
+			}
+		}, 
+		IDLE {
+			
+			@Override
+			void insertCoin(VendingMachine v, int coin) {
+				v.coins += coin;
+				System.out.println("Total of: " + v.coins + "$ inserted");
+				v.state = HAS_COINS;
+			}			
+		},
+		HAS_COINS {
+			
+			@Override
+			void insertCoin(VendingMachine v, int coin) {
+				v.coins += coin;
+				System.out.println("Total of: " + v.coins + "$ inserted");
+			}
+			
+			@Override
+			void chooseDrink(VendingMachine v) {
+				if (v.coins >= PRICE) {
+					System.out.println("Delivering drink");
+					System.out.println("Your change is: " + (v.coins - PRICE) + "$");
+					System.out.println("Returning coins...");
+					v.coins = 0;
+					v.state = DELIVERING;
+				}
+			}
+			
+			// TODO: Maybe add timeout;
+		},
+		DELIVERING {
+					
+			@Override
+			void timeOut(VendingMachine v) {
+				System.out.println("Delivering drink"); 
+				System.out.println("Completing transaction");
+				v.state = TRANSACTION_COMPLETE;
+			}
+		},
+		TRANSACTION_COMPLETE {
+			
+			@Override
+			void timeOut(VendingMachine v) {
+				System.out.println("Returning to idle state");
+				System.out.println("To buy a drink please insert some coins...");
+				v.state = IDLE;
+			}
+		}; 
+		
+		void connect(VendingMachine v) { System.out.println("!!!!!!Wrong choise!!!!!!!"); }
+		void insertCoin(VendingMachine v, int coin) { System.out.println("!!!!!!Wrong choise!!!!!!!"); }
+		void chooseDrink(VendingMachine v) { System.out.println("!!!!!!Wrong choise!!!!!!!"); }
+		void timeOut(VendingMachine v) { System.out.println("!!!!!!Wrong choise!!!!!!!"); } 
+	}
+}

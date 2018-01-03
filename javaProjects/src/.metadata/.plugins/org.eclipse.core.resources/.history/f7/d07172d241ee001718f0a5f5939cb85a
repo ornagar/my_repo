@@ -1,0 +1,24 @@
+package il.co.ilrd;
+
+import java.util.Vector;
+
+public class Directory extends Entry {
+	private Vector<Entry> entries;
+	
+	public Directory(String path) {
+		super(path);
+	}
+	
+	public Directory lastDir() {
+		return (Directory)entries.get(0);
+	}
+	
+	public void addEntry(Entry en) {
+		entries.add(en);
+	}
+	@Override
+	public void printTree() {
+		// TODO Auto-generated method stub
+		
+	}
+}

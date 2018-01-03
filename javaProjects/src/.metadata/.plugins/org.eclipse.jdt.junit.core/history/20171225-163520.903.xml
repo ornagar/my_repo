@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestSingletons" project="Singletons" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="il.co.ilrd.TestSingletons" time="0.027" displayname="TestSingletons" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]">
+    <testcase name="test1" classname="il.co.ilrd.TestSingletons" time="0.017" displayname="test1()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test1()]"/>
+    <testcase name="test2" classname="il.co.ilrd.TestSingletons" time="0.002" displayname="test2()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test2()]"/>
+    <testcase name="test3" classname="il.co.ilrd.TestSingletons" time="0.008" displayname="test3()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestSingletons]/[method:test3()]"/>
+  </testsuite>
+</testrun>

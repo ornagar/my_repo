@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestLinkedList" project="LinkedList" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="il.co.ilrd.TestLinkedList" time="0.029" displayname="TestLinkedList" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestLinkedList]">
+    <testcase name="testList1" classname="il.co.ilrd.TestLinkedList" time="0.029" displayname="testList1()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestLinkedList]/[method:testList1()]"/>
+  </testsuite>
+</testrun>

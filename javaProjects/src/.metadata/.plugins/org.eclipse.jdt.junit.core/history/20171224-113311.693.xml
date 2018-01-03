@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestShape" project="Shape" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="il.co.ilrd.TestShape" time="0.018" displayname="TestShape" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestShape]">
+    <testcase name="test" classname="il.co.ilrd.TestShape" time="0.018" displayname="test()" uniqueid="[engine:junit-jupiter]/[class:il.co.ilrd.TestShape]/[method:test()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+
+/**
+ * @author xyz
+ *
+ */
+public class Complex {
+
+	/**
+	 * 
+	 */
+	public Complex() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

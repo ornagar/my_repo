@@ -1,0 +1,11 @@
+package il.co.ilrd;
+
+//import java.io.File;
+
+public class TestFS {
+	public static void main(String[] args) {
+		Entry root = Entry.buildTree(args[0]);
+		root.printTree();
+		System.out.println(args);
+	}
+}

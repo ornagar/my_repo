@@ -1,0 +1,39 @@
+package il.co.ilrd;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+
+public class TestFS {
+	public static void main(String[] args) throws IOException {
+		Path path  = Paths.get("/home/xyz/my_repo");
+		
+		try {
+			  Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+			    
+			    @Override
+			    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+			      String fileString = file.toAbsolutePath().toString();
+			      //System.out.println("pathString = " + file);
+			      
+			      if (!file.toFile().isDirectory()) {
+			    	  System.out.println("pathString = " + file);
+					}
+			      
+			      if(fileString.endsWith(File.separator + "Snake.hpp")){
+			        System.out.println("file found at path: " + file.toAbsolutePath());
+			        return FileVisitResult.TERMINATE;
+			      }
+			      return FileVisitResult.CONTINUE;
+			    }
+			  });
+			} catch(IOException e){
+			    e.printStackTrace();
+			}
+	}
+}

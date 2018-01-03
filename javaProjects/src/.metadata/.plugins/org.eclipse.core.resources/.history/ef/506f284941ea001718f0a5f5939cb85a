@@ -1,0 +1,105 @@
+
+public class VendingMachine {
+	private State state = State.DISCONNECTED;
+	private int coins = 0;
+	//private Drinks drinks = new Drinks(); // TODO: make class drinks.
+	final private static int PRICE = 5;
+	
+	public void connect() {
+		state.connect(this);
+	}
+	
+	static private enum State {
+		DISCONNECTED {
+			@Override
+			void connect(VendingMachine v) {
+				System.out.println("Connecting...");
+				System.out.println("Loading system...");
+				System.out.println("Testing sensores...");
+				System.out.println("Loading Completed...");
+				System.out.println("Connected!!");
+				v.state = State.IDLE;
+			}
+		},
+		IDLE {
+			
+			@Override
+			void insertCoin(VendingMachine v, int coin) {
+				System.out.println("total of: " + (v.coins + coin) + "$ inserted");
+				v.state = State.HAS_COINS;
+			}
+			
+			@Override
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Price is 5$");
+			}
+			
+		},
+		HAS_COINS {
+			
+			@Override
+			void insertCoin(VendingMachine v, int coin) {
+				System.out.println("total of: " + (v.coins + coin) + "$ inserted");
+			}
+			
+			@Override
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			
+			@Override
+			void timeOut(VendingMachine v) {
+				
+			}
+		},
+		DELIVERING {
+			
+			@Override
+			void connect(VendingMachine v) {
+				v.state = State.IDLE;
+			}
+			
+			@Override
+			void insertCoin(VendingMachine v, int coin) {
+				System.err.println("Disconnected, take your coins back");
+			}
+			
+			@Override
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			
+			@Override
+			void timeOut(VendingMachine v) {
+				
+			}
+		},
+		TRANSACTION_COMPLETE {
+			
+			@Override
+			void connect(VendingMachine v) {
+				v.state = State.IDLE;
+			}
+			
+			@Override
+			void insertCoin(VendingMachine v, int coin) {
+				System.err.println("Disconnected, take your coins back");
+			}
+			
+			@Override
+			void chooseDrink(VendingMachine v) {
+				System.err.println("Disconnected, come back later");
+			}
+			
+			@Override
+			void timeOut(VendingMachine v) {
+				
+			}
+		};
+		
+		void connect(VendingMachine v) { System.err.println("Wrong choise..."); }
+		void insertCoin(VendingMachine v, int coin) { System.err.println("Wrong choise..."); }
+		void chooseDrink(VendingMachine v) { System.err.println("Wrong choise..."); }
+		void timeOut(VendingMachine v) { System.err.println("Wrong choise..."); } 
+	}
+}

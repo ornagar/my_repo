@@ -1,0 +1,30 @@
+package il.co.ilrd;
+
+public class Main {
+	public static void main(String[] args) {
+		LinkedList<Integer> list1 = new LinkedList<>();
+		
+		for (int i = 0; i < 50; ++i) {
+			list1.pushFront(i);
+		}
+		
+		
+		
+		LinkedList<Byte> list2 = new LinkedList<>();
+		
+		for (Byte i = 0; i < 50; ++i) {
+			list2.pushFront(i);
+		}
+		LinkedList<Integer>.ListIter iter1 = list1.find(12);
+		LinkedList<Byte>.ListIter iter2 = list2.find(12);
+		
+		if (iter1.getData() == iter2.getData()) {
+			System.out.println("success!!");
+		}
+		
+		while (!list1.isEmpty()) {
+			System.out.println(list1.popFront());
+			System.out.println(list2.popFront());
+		}
+	}
+}

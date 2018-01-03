@@ -1,0 +1,7 @@
+package il.co.ilrd;
+
+public abstract class Entry {
+	private String name;
+	
+	abstract public void printTree();
+}

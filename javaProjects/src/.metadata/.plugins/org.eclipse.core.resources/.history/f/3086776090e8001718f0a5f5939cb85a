@@ -1,0 +1,60 @@
+/**
+ * 
+ */
+package il.co.ilrd;
+/**
+ * @author xyz
+ *
+ */
+public class Complex {
+	private double m_real;
+	private double m_imag;
+	private boolean m_positive;
+	private char m_sign;
+	
+	public Complex() {
+		m_real = 0.0;
+		m_imag = 0.0;
+		m_positive = true;
+		
+		m_sign = m_positive ? '+' : '-';
+	}
+	
+	public Complex(double real, double imag) {
+		m_real = real;
+		m_imag = imag;
+		m_positive = (imag >= 0) ? true : false;
+		m_sign = m_positive ? '+' : '-';
+	}
+	
+	public Complex add(Complex other) {
+		m_real += other.m_real;
+		m_imag += other.m_imag;
+		m_positive = m_imag >= 0 ? true : false;
+		m_sign = m_positive ? '+' : '-';
+		return this;
+	}
+	
+	public String toString() {
+		
+		return "" + m_real + " " + m_sign + " " + java.lang.Math.abs(m_imag) + 'i';
+		
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) return true;
+        if (!(o instanceof Complex)) {
+            return false;
+        }
+        Complex c = (Complex) o;
+        return m_real == c.m_real &&
+                m_imag == c.m_imag &&
+                m_positive == c.m_positive;
+	}
+	
+	@Override
+    public int hashCode() {
+        return java.util.Objects.hash(m_real, m_imag, m_positive);
+    }
+}

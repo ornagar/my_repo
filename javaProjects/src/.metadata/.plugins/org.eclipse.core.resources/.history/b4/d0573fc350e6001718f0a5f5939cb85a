@@ -1,0 +1,7 @@
+package il.co.ilrd;
+
+public class Square extends Rectangle {
+	public Square() {
+		super(1, 1);
+	}
+}

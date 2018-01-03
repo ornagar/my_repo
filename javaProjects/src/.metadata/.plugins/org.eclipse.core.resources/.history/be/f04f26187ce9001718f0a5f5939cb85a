@@ -1,0 +1,18 @@
+package il.co.ilrd;
+
+public class Singleton3 {
+	
+	private static class Inner {
+		private static Singleton3 instance = new Singleton3();
+	}
+	
+	public static Singleton3 getInstance() {
+		return Inner.instance;
+	}
+	
+	public void foo3() { 
+		System.out.println("inside foo2()"); 
+	}
+	
+	private Singleton3() {}
+}

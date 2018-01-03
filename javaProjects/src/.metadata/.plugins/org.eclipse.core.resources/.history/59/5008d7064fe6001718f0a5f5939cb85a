@@ -1,0 +1,20 @@
+package il.co.ilrd;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Shape x = new Shape();
+		x.setColor("blue");
+		System.out.println(x);
+		
+		Shape y = new Shape("red", false);
+		y.setColor("black");
+		System.out.println(y);
+		
+		Shape z = new Circle(10.0, "red", false);
+		z.setColor("pink");
+		System.out.println(z);
+		
+	}
+
+}

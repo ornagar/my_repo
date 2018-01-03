@@ -1,0 +1,20 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestVendingMachine {
+
+	@Test
+	void test1() {
+		VendingMachine v1 = new VendingMachine();
+		v1.connect();
+		v1.chooseDrink();
+		v1.insertCoin(4);
+		v1.chooseDrink(); 
+		v1.insertCoin(4);
+		v1.chooseDrink(); 
+		assertTrue(true);
+	}  
+  
+} 
+  

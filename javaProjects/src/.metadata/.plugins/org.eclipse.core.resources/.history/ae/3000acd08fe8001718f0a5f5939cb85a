@@ -1,0 +1,34 @@
+/**
+ * 
+ */
+package il.co.ilrd;
+/**
+ * @author xyz
+ *
+ */
+public class Complex {
+	private double m_real;
+	private double m_imag;
+	private boolean m_positive;
+	
+	public Complex() {
+		m_real = 0.0;
+		m_imag = 0.0;
+		m_positive = true;
+	}
+	
+	public Complex(double real, double imag) {
+		m_real = real;
+		m_imag = imag;
+		m_positive = (imag >= 0) ? true : false;
+	}
+	
+	public String toString() {
+		if (m_positive) {
+			return "" + m_real + " + " + java.lang.Math.abs(m_imag) + 'i';
+		} else {
+			return "" + m_real + " - " + java.lang.Math.abs(m_imag) + 'i';
+		}	 
+	}
+
+}

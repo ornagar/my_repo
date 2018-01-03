@@ -1,0 +1,19 @@
+package il.co.ilrd;
+
+public class File extends Entry {
+	
+	public File(String name) {
+		super(name);
+	}
+	
+	public String getName() {
+		return super.getName();
+	}
+	
+	@Override
+	public void printTree() {
+		System.out.println(name + "\n\n");
+		
+	}
+
+}

@@ -1,0 +1,133 @@
+1. What are the components that compose a class declaration? An object declaration?
+	Access permitions, class name, extends/implements, instance member fields,
+	class(static) fields.
+	
+2. What is the difference between extending a class and implementing an interface?
+How many classes can a class extend?
+	Extending a class declears that the subclass has a "is a" relationship with 
+	the base class, while implementing an interface says that the class is 
+	commited to the interface's rools. It is possible to extend only one class 
+	(pluss the Object class that is automatically extended by any class. You can
+	implement as many interfaces as you like.
+	
+3. Is it possible to extend an interface? Why would you do that?
+	Yes, by an interface. to add it more methods.
+	
+4.What is overriding?
+	When a derrived class defines a method that exists(has same signature) in the
+	base class/abstract class/interface. Used for polymorphism.
+	
+5. What is a static method?
+	A method that can't access non static members, and can be used without 
+	instantiating the an object of that class.
+	
+6. What is a default method?
+	It can be accessed by any class in the package.
+	
+7. What is early binding? What is late binding? What is happening in java? What 
+about final methods and private methods?
+	Early binding is compile time binding (when the compiler knows the type or 
+	method to be bound), late binding is run time binding like in overriden methods.
+	final methods cannot be overriden, and private methods can be used only by 
+	methods in the same class.
+	
+8. What is an abstract class? In what are abstract classes similar to interfaces?
+What is different from interfaces?
+	A class that doesn't define all of it's methods and can't be instantiated.
+	Both have abstract methods that are implemented by the derived class.
+	In abstract classes you can implement non static methods and it shows a "is a"
+	relationship between them.
+	
+9. Investigate the String and StringBuilder classes. What is the difference 
+between the two?
+	StringBuilder is like string but mutable, you can change the string or part 
+	of it without creating a new one and releasing the old one.
+	
+10. What are annotations? what do they provide?
+	They provide an expantion to the classes metadata and act as extra data for 
+	the compiler/runtime system.
+	
+11. What is upcasting and downcasting?
+	Upcasting happens implicitly and is the transformation + the runtime checking 
+	from a derived class to the base class. Downcasting is the oposite and must 
+	be done explicitly (objects name). It also provides a runtime checking that 
+	the class is actualy the casted class.
+	
+12. What is the definition of RTTI?
+	Run Time Type Information is the data that allows us to know the exact type 
+	of an object during runtime.
+	
+13. What is the Class object? What does it contain?
+	A special object that contains metadata for each object in the running proccess.
+	
+14. How can you use instanceof? For what purpose?
+	It's an operator in java wich returns whether the type of some object is the 
+	one we expect in runtime.
+	
+15. To what is instanceof compared? Is it possible to compare it to a class object?
+	To instanceof operator. Yes.
+	
+16. What is the difference between instanceof and isInstance()? When will we 
+use each?
+	If we need runtime information we will use isInstance().
+	
+17. Given a base class without default constructor, what will happen when 
+implementing the derved class constructor if you do not call explicitly super()?
+	The compiler will create a default constructor for the base class and will 
+	call it implicitly when creating the derived object.
+	
+18. What will be the output of the following code and why?
+	public class Test {
+		public static void main(String[] args) {
+			Useful[] x = {
+				new Useful(),
+				new MoreUseful()
+			};
+			x[0].f();
+			x[1].g();
+			x[1].i();
+			((MoreUseful)x[1]).i();
+			((MoreUseful)x[0]).i();
+		}
+	}
+
+	class Useful {
+		public void f() {}
+		public void g() {}
+	}
+	class MoreUseful extends Useful {
+		public void h() {} 
+		public void i() {}
+		public void j() {}
+		public void k() {}
+	}
+	
+	It won't compile because the reference to Useful does not know i();
+	if we run it without this line it will throw an exception java.lang.ClassCastException:
+	
+19. When is a class loaded? Write a test and investigate loading of classes.
+	On the first instantiation of an object of that class.
+	
+20. Investigate the following methods: 
+	Class.forName(String className) - Create an instance using a string.
+	
+	Class.getInterfaces() - Determines the interfaces implemented by the class 
+			or interface represented by this object.
+	
+	Class.getName() - Returns the name of the entity represented by this Class 
+			object, as a String.
+			
+	Class.isInterface(Object obj) - Determines if the specified Object is 
+			assignment-compatible with the obect represented by this Class.
+			
+	Class.getSuperclass() - Returns the Class representing the superclass of the
+			entity represented by this Class.
+			
+	Class.newInstance() - Creates a new instance of the class represented by 
+			this Class object.
+			
+21. Why do we need the class Class?
+	To examine class and their metadata during runtime.
+	
+22. When would you use Reflection? Why do we need it?
+	??? after the exercises continue reading nicolas.....html

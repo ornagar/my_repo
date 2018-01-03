@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="TestComplex" project="Complex" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="il.co.ilrd.TestComplex" time="0.0">
+    <testcase name="test1" classname="il.co.ilrd.TestComplex" time="0.0"/>
+    <testcase name="test2" classname="il.co.ilrd.TestComplex" time="0.0"/>
+    <testcase name="test3" classname="il.co.ilrd.TestComplex" time="0.0"/>
+    <testcase name="test4" classname="il.co.ilrd.TestComplex" time="0.0"/>
+  </testsuite>
+</testrun>

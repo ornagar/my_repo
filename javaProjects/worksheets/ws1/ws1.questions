@@ -1,0 +1,49 @@
+1. What is the JVM? Why is Java called a "Platform Independent Programming 
+Language"?
+    * JVM - Java Virtual Machine is the virtual machine that runs the java 
+    bytecode, thats why it's a platform independent programming language.
+    On each machine you wish to run a java bytecode you need to install 
+    a JVM so any code can run on any computer architechture or OS as long as 
+    it has a JVM installed.
+    
+2. What is the Difference between the JDK and JRE?
+	JDK - Java Development Kit is a collections of tools used by java developers.
+	JRE - Java Run-time Environment is a part of the JDK and includes the 
+	JVM, Platform classes and supporting libraries.
+	
+3. Which method is a mandatory part of every Java program? What is its signature?
+	The main method - public static void main(String[] args);
+
+4. Describe the code-build-run cycle in terms of .java and .class files 
+and the related JDK tools.
+	first we write the .java source file.
+	than we compile it to java byte code .class file using javac compiler.
+	than we run the bytecode using the java command (wthout the .class extension)
+	
+5. Is Java case sensitive?
+	Yes.
+
+6. What is promotion in garbage collection?
+	During any minor garbage collection event all referenced allocated objects 
+	are aged (age++) and moved (if needed) to their new generation.
+	
+7. What is minor garbage collection and major garbage collection? What is the 
+difference between them.
+	Minor collection occours every time the eden space is full and major 
+	collection occours when the old generation is full. Both are "stop the world"
+	events.
+	
+8. Can we manage GC-policy?
+	Yes.
+
+9. Can we change the size of heap/stack?
+	Yes.
+	
+10. What is allocated on heap? On stack?
+	All new allocated objects are allocated on the heap and their references
+	(pointers) are allocated on the stack.
+	
+11. What is a GC root?
+	??? didn't understand, left for later.
+	
+	

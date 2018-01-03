@@ -1,0 +1,10 @@
+package il.co.ilrd;
+
+//import java.io.File;
+
+public class TestFS {
+	public static void main(String[] args) {
+		Entry root = Entry.buildTree("/home/xyz/my_repo/src/python");
+		root.printTree();
+	}
+}

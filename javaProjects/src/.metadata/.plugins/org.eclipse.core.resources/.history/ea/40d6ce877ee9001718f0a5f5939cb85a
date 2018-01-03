@@ -1,0 +1,25 @@
+package il.co.ilrd;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestSingletons {
+
+	@Test
+	void test1() {
+		Singleton3.foo3();
+		Singleton3 s1 = Singleton3.getInstance();
+		Singleton3 s2 = Singleton3.getInstance();
+		assertTrue(s1 == s2);
+	}
+	
+	@Test
+	void test2() {
+		//Singleton2.foo2();
+		Singleton2 s1 = Singleton2.getInstance();
+		//Singleton2 s2 = Singleton2.getInstance();
+		assertTrue(s1 != null);  
+	}
+
+}

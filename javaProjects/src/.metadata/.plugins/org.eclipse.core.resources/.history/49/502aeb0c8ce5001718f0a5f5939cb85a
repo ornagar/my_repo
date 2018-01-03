@@ -1,0 +1,16 @@
+package il.co.ilrd;
+
+public class Main {
+	public static void main(String[] args) {
+		LinkedList list1 = new LinkedList();
+		
+		for (int i = 0; i < 50; ++i) {
+			list1.pushFront(i);
+		}
+		
+		//while (!list1.isEmpty()) {
+			System.out.println(list1.find(56).getData());
+		//}
+		
+	}
+}

@@ -1,0 +1,11 @@
+package il.co.ilrd;
+
+public class DataObject {
+	public String code;
+	public int value;
+	
+	public DataObject(String code, int value) {
+		this.code = code;
+		this.value = value;
+	}
+}

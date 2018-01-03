@@ -1,0 +1,12 @@
+
+public class Main {
+	public static void main(String[] args) {
+		VendingMachine v1 = new VendingMachine();
+		v1.connect();
+		/*v1.chooseDrink();
+		v1.insertCoin(4);
+		v1.chooseDrink(); 
+		v1.insertCoin(4);
+		v1.chooseDrink();*/ 
+	}
+}

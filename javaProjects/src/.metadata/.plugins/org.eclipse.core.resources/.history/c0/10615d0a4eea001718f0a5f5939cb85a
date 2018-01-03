@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		VendingMachine v1 = new VendingMachine();
+		Scanner sc = new Scanner(System.in);
+		boolean killMachine = false;
+		v1.connect();
+		while (!killMachine) {
+			String str = sc.nextLine();
+		
+			switch (str) {
+			case "1":
+				v1.insertCoin(1);
+				break;
+			case "2":
+				v1.insertCoin(2);
+				break;
+			case "5":
+				v1.insertCoin(5);
+				break;
+			case "10":
+				v1.insertCoin(10);
+				break;
+			case "c": 
+				v1.chooseDrink();
+				break;
+			case "q":
+				sc.close();
+				v1.stop();
+				killMachine = true;
+			default:
+				break;
+			}
+		}
+		
+	}
+}

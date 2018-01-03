@@ -1,0 +1,414 @@
+/**
+ * 
+ */
+package il.co.ilrd;
+
+import java.util.List;
+import java.io.Serializable;
+import java.util.AbstractSequentialList;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.ListIterator;
+
+/**
+ * @author Or Nagar
+ *
+ */
+public class LinkedList<E> 
+implements Iterable<E> , List<E>, Cloneable, Serializable {
+	
+	private static final long serialVersionUID = -858019910307930104L;
+	private Node tail = new Node();
+	private Node head = tail;
+	
+	public boolean isEmpty() {
+		return head == tail;
+	}
+	
+	public void pushFront(E data) {
+		head = new Node(data, head);
+	}
+	
+	public Object popFront() {
+		Object data = head.data;
+		head = head.next;
+		return data;
+	}
+	
+	public ListIter begin() {
+		return new ListIter(this);
+	}
+	
+	public ListIter find(Object data) {
+		ListIter iter = new ListIter(this);
+		ListIter found;
+		while (iter.hasNext()) {
+			found = iter;
+			if (iter.next() == data) {
+				return found;
+			}
+		}
+		return iter;
+	}
+	
+	@Override
+	public ListIterator<E> listIterator(int index) {
+		ListIter l = new ListIter(this);
+		for (int i = 0; i < index; ++i) {
+			l.next();
+		}
+		return l;
+	}
+
+	@Override
+	public int size() {
+		int counter = 0;
+		for (ListIter l = begin(); l.hasNext(); ++counter) {
+			l.next();
+		}
+		return counter;
+	}
+
+	@Override
+	public void addFirst(E e) {
+		pushFront(e);
+		
+	}
+
+	@Override
+	public void addLast(E e) {
+		Node runner = head;
+		while (runner.next != tail) {
+			runner = runner.next;
+		}
+		Node temp = new Node();
+		temp.data = e;
+		temp.next = runner.next;
+		runner.next = temp;
+	}
+
+
+	
+	private class Node {
+		private Node next;
+		private E data;
+		
+		private Node() {}
+		
+		public Node(E data, Node next) {
+			this.data = data;
+			this.next = next;
+		}
+	}
+	
+	public class ListIter implements ListIterator<E> {
+		private Node current;
+		private int index;
+		
+		public ListIter(LinkedList<E> list) {
+			current = list.head;
+			index = 0;
+		}
+		
+		public ListIter(ListIter other) {
+			current = other.current;
+			index = other.index;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			return current.next.data != null;
+		}
+
+		@Override
+		public E next() {
+			current = current.next;
+			index += 1;
+			
+			return current.data;
+		}
+		
+		public E getData() {
+			return current.data;
+		}
+
+		@Override
+		public boolean hasPrevious() {
+			return false;
+		}
+
+		@Override
+		public E previous() {
+			return null;
+		}
+
+		@Override
+		public int nextIndex() {
+			return index;
+		}
+
+		@Override
+		public int previousIndex() {
+			return 0;
+		}
+
+		@Override
+		public void remove() {
+			current.next = current.next.next;
+		}
+
+		@Override
+		public void set(E e) {
+			current.data = e;
+		}
+
+		@Override
+		public void add(E e) {
+			Node temp = new Node();
+			temp.data = e;
+			temp.next = current.next;
+			current.next = temp;
+		}
+	}
+
+	@Override
+	public boolean offerFirst(E e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean offerLast(E e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public E removeFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E removeLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E pollFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E pollLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E getFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E getLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E peekFirst() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E peekLast() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean removeFirstOccurrence(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeLastOccurrence(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean offer(E e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public E remove() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E poll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E element() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E peek() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void push(E e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public E pop() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterator<E> descendingIterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean contains(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object[] toArray() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T> T[] toArray(T[] a) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean add(E e) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(Object o) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean containsAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addAll(Collection<? extends E> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addAll(int index, Collection<? extends E> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean removeAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean retainAll(Collection<?> c) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public E get(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public E set(int index, E element) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(int index, E element) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public E remove(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int indexOf(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int lastIndexOf(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public ListIterator<E> listIterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<E> subList(int fromIndex, int toIndex) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterator<E> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

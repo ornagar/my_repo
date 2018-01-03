@@ -1,0 +1,47 @@
+
+public class Foo {
+	public void func1() {
+		System.out.println("Foo.func1();");
+	}
+	
+	public void func2() {
+		System.out.println("Foo.func2();");
+	}
+	
+	public void func3() {
+		System.out.println("Foo.func3();");
+	}
+	
+	public void func4() {
+		System.out.println("Foo.func4();");
+	}
+	
+	@Override
+	public String toString() {
+		return "Foo Class";
+	}
+	
+	public class InnerFoo {
+		public void infunc1() {
+			System.out.println("InnerFoo.infunc1();");
+		}
+	
+		public void infunc2() {
+			System.out.println("InnerFoo.infunc2();");
+		}
+	
+		public void infunc3() {
+			System.out.println("InnerFoo.infunc3();");
+		}
+	
+		public void infunc4() {
+			System.out.println("InnerFoo.infunc4();");
+		}
+	
+		@Override
+		public String toString() {
+			return "InnerFoo Class";
+		}
+	}
+}
+

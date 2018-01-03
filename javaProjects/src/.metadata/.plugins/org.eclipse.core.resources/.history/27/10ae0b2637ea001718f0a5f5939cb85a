@@ -1,0 +1,44 @@
+
+public class VendingMachine {
+	private State state = State.DISCONNECTED;
+	
+	private enum State {
+		DISCONNECTED {
+			void connect() {
+				super.this.state = State.IDLE;
+			}
+			void insertCoin(int coin);
+			void chooseDrink();
+			void timeOut();
+		},
+		IDLE {
+			void connect();
+			void insertCoin(int coin);
+			void chooseDrink();
+			void timeOut();
+		},
+		HAS_COINS {
+			void connect();
+			void insertCoin(int coin);
+			void chooseDrink();
+			void timeOut();
+		},
+		DELIVERING {
+			void connect();
+			void insertCoin(int coin);
+			void chooseDrink();
+			void timeOut();
+		},
+		TRANSACTION_COMPLETE {
+			void connect();
+			void insertCoin(int coin);
+			void chooseDrink();
+			void timeOut();
+		};
+		
+		abstract void connect();
+		abstract void insertCoin(int coin);
+		abstract void chooseDrink();
+		abstract void timeOut();
+	}
+}

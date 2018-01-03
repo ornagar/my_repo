@@ -1,0 +1,15 @@
+package il.co.ilrd;
+
+public class File extends Entry {
+	
+	public File(String name) {
+		super(name);
+	}
+	
+	@Override
+	public void printTree() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

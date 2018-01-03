@@ -1,0 +1,33 @@
+package il.co.ilrd;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.nio.file.WatchEvent.Kind;
+import java.nio.file.WatchEvent.Modifier;
+import java.util.Iterator;
+
+public class TestFS {
+	public static void main(String[] args) throws IOException {
+		Path path  = Paths.get("/home/xyz/testPaths");
+		
+		try {
+			Path newDir = Files.createDirectory(path);
+		} catch (FileAlreadyExistsException e) {
+			System.out.println("Dir exists");
+		} catch (IOException e) {
+			System.out.println("Something else went wrong");
+			e.printStackTrace();
+		}
+		
+	}
+}

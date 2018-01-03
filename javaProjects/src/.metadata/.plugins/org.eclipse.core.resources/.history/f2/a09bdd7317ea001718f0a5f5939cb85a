@@ -1,0 +1,9 @@
+package il.co.ilrd;
+
+public interface Inter {
+	default int foo() {
+		return 3;
+	}
+	
+	public int foo14();
+}

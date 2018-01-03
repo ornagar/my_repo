@@ -1,0 +1,49 @@
+import java.lang.reflect.Method;
+
+public class Main {
+	public static void main(String[] args) {
+		ObjectAnalyzer an;
+		try {
+			an = new ObjectAnalyzer("Foo", "Foo$InnerFoo");
+			
+			an.printAncestor();
+			/*an.printInterfaces();
+			an.printModifiers();
+			an.printMembers();
+			*/
+			/*Object obj = an.newInstance();
+			
+			if (obj == null) {
+				System.out.println("newInstatnce failure");
+				return;
+			}
+			
+			Method[] methods = an.getMethods();
+			System.out.println("Object of type: " + obj.toString() + " invoking method: " + methods[0].getName());
+			methods[0].setAccessible(true);
+			methods[0].invoke(obj);
+			
+			Object inner = an.newInnerInstance(obj);
+			if (inner == null) {
+				System.out.println("newInstatnce failure");
+				return;
+			}
+			
+			Method[] innerMethods = an.getInnerMethods();
+			System.out.println("Object of type: " + inner.toString() + " invoking method: " + innerMethods[3].getName());
+			innerMethods[3].setAccessible(true);
+			innerMethods[3].invoke(inner);
+			*/
+			
+		
+		} catch (ClassNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (NullPointerException ex) {
+			ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
+	}
+}

@@ -1,0 +1,22 @@
+package il.co.ilrd;
+
+public class Singleton3 {
+	private static Singleton3 instance = null;
+		
+		public static Singleton3 getInstance() {
+			if (instance == null) {
+				synchronized (instance) {
+					if (instance == null) {
+						instance = new Singleton2();
+					}
+				}
+			}
+			return instance;
+		}
+		
+		public void foo3() { 
+			System.out.println("inside foo2()"); 
+		}
+		
+		private Singleton3() {}
+}

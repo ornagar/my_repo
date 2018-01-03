@@ -1,0 +1,14 @@
+package il.co.ilrd;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Shape x = new Shape();
+		System.out.println(x);
+		
+		Shape y = new Shape("red", false);
+		System.out.println(y);
+
+	}
+
+}

@@ -1,0 +1,7 @@
+package il.co.ilrd;
+
+public interface Innter2 {
+	default int foo() {
+		return 2;
+	}
+}

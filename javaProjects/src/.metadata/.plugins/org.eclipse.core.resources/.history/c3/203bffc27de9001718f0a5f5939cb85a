@@ -1,0 +1,26 @@
+package il.co.ilrd;
+/**
+ *  
+ * @author Or Nagar
+ *Lazy Singleton
+ */
+public class Singleton2 {
+private static Singleton2 instance = null;
+	
+	public static Singleton2 getInstance() {
+		if (instance == null) {
+			synchronized (instance) {
+				if (instance == null) {
+					instance = new Singleton2();
+				}
+			}
+		}
+		return instance;
+	}
+	
+	public void foo2() { 
+		System.out.println("inside foo2()"); 
+	}
+	
+	private Singleton2() { System.out.println("inside ctor2");}
+}

@@ -1,0 +1,22 @@
+package il.co.ilrd;
+
+import java.util.*;
+
+
+//import java.io.File;
+
+public class TestFS {
+	public static void main(String[] args) {
+		Entry root = Entry.buildTree(args[0]);
+		root.printTree();
+		
+		String[] strings = {"hello", "how", "are", "you", "i", "i", "i", "i", "i", "i", "i", "i", "i", "i"};
+		Set<String> set = new LinkedHashSet<String>();
+		
+		for (String i : strings) {
+			set.add(i);
+		}
+		
+		System.out.println(set);
+	}
+}

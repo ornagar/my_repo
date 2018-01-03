@@ -1,0 +1,8 @@
+
+public class MessageUtil {
+
+	public MessageUtil() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

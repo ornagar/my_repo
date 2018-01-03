@@ -1,0 +1,85 @@
+/**
+ * 
+ */
+package il.co.ilrd;
+
+/**
+ * @author Or Nagar
+ *
+ */
+public class LinkedList {
+	
+	private Node m_tail = new Node();
+	private Node m_head = m_tail;
+	
+	public boolean isEmpty() {
+		return m_head == m_tail;
+	}
+	
+	public void pushFront(Object data) {
+		m_head = new Node(data, m_head);
+	}
+	
+	public Object popFront() {
+		Object data = m_head.m_data;
+		m_head = m_head.m_next;
+		return data;
+	}
+	
+	public ListIter find(Object data) {
+		ListIter iter = new ListIter(this);
+		ListIter found;
+		while (iter.hasNext()) {
+			found = iter;
+			if (iter.next() == data) {
+				return found;
+			}
+		}
+		return iter;
+		
+	}
+	
+	private class Node {
+		private Node m_next = null;
+		private Object m_data = null;
+		
+		private Node() {}
+		
+		public Node(Object data, Node next) {
+			m_data = data;
+			m_next = next;
+		}
+	}
+	
+	
+	
+	public class ListIter implements ListIterator {
+
+		public ListIter(LinkedList list) {
+			m_current = list.m_head;
+		}
+		
+		public ListIter(ListIter other) {
+			m_current = other.m_current;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			return m_current.m_data != null;
+		}
+
+		@Override
+		public Object next() {
+			Object temp = m_current.m_data;
+			m_current = m_current.m_next;
+			
+			return temp;
+		}
+		
+		public Object getData() {
+			return m_current.m_data;
+		}
+		
+		private Node m_current;
+	}
+}

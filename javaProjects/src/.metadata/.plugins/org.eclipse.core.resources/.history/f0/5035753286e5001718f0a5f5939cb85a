@@ -1,0 +1,6 @@
+package il.co.ilrd;
+
+public interface ListIterator {
+	public Object next();
+	public Object hasNext();
+}
